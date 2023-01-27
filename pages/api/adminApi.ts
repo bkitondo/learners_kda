@@ -1,9 +1,9 @@
 import { connexion } from '@/boites/connexionDb/connexion'
 import { getAdmin, createOrFindAdmin } from '@/boites/controllers/adminCtr'
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  message: string
+  message: String
   data: any
 }
 
