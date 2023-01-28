@@ -77,3 +77,23 @@ export async function UpdateAdmin(request : NextApiRequest, response: NextApiRes
   });
   
 }
+
+
+export async function DeleteAdmin (request: NextApiRequest, response: NextApiResponse) {
+  const id = request.query.id;
+    try{
+      await adminModel.findByIdAndRemove(id)
+      .then(admin => {
+        if(!admin){
+          response.status(500).json({message: "Admin you wanna delete doesn't exist"})
+        }
+        else{
+          response.status(200).json({message: "Admin deleted"})
+        }
+      }).
+      catch(err => {throw err})
+    }
+    catch(err){
+      throw err
+    }
+}
