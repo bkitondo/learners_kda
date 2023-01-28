@@ -1,5 +1,5 @@
 import { connexion } from '@/boites/connexionDb/connexion'
-import { getAdmin, createOrFindAdmin } from '@/boites/controllers/adminCtr'
+import { getAdmin, createOrFindAdmin, UpdateAdmin } from '@/boites/controllers/adminCtr'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
