@@ -53,29 +53,37 @@ export async function createOrFindAdmin(
 
 export async function UpdateAdmin(request : NextApiRequest, response: NextApiResponse<Data>) {
 
-  const id = request.query.id;
-  console.log(id)
-      bcrypt.hash(request.body.password, 10, async function (err, hash) {
-      try{
-        await adminModel.findByIdAndUpdate(id, {
-          email: request.body.email,
-          password: hash,
-         }).then(admin => { 
-            if(!admin){
-              response.status(500).json({message: "Interval Error Server", data: admin})
-            }
-            else{
-              response.status(200).json({message: "Admin Updated", data: admin})
-            }
-         }).catch(err => {
-            throw err
-         })
-       }
-       catch (err) {
-        throw err
+      const id = request.query.id;
+      const { email, password } = request.body
+
+          if(!email && email.trim() === "") {
+              response.status(500).json({message: "Email cannot be empty", data: email})
+          }
+          if(!password && password.trim() === "") {
+            response.status(500).json({message: "Password cannot be empty", data: password})
+          }
+          else{
+            bcrypt.hash(request.body.password, 10, async function (err, hash) {
+              try{
+                await adminModel.findByIdAndUpdate(id, {
+                  email: request.body.email,
+                  password: hash,
+                }).then(admin => { 
+                    if(!admin){
+                      response.status(500).json({message: "Admin you wanna update doesn't exist", data: admin})
+                    }
+                    else{
+                      response.status(200).json({message: "Admin Updated", data: admin})
+                    }
+                }).catch(err => {
+                    throw err
+                })
+              }
+              catch (err) {
+                throw err
+              }
+          });
       }
-  });
-  
 }
 
 
