@@ -56,3 +56,31 @@ export async function getAllUser(
       throw err
     })
 }
+
+export async function UpdateUser(request: NextApiRequest, response: NextApiResponse) {
+    const id = request.query.id
+        bcrypt.hash(request.body.password, 10, async function (err, hash) {
+        try{
+          await userModel.findByIdAndUpdate(id,{
+            name: request.body.name, 
+            lastName: request.body.lastName,
+            email: request.body.email, 
+            password:hash
+          })
+          .then(user => {
+              if(!user) {
+                response.status(500).json({message: "User you wanna update doesn't exist"})
+              }
+              else{
+                response.status(200).json({message: "User updated", data: user})
+              }
+          })
+          .catch(err => {
+            throw err
+          })
+        }
+        catch(err) {
+          throw err
+        }
+    });
+} 
