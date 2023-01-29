@@ -59,7 +59,22 @@ export async function getAllUser(
 
 export async function UpdateUser(request: NextApiRequest, response: NextApiResponse) {
     const id = request.query.id
-        bcrypt.hash(request.body.password, 10, async function (err, hash) {
+    const { name, lastName, email, password } = request.body
+    if(
+      !name && name.trim() === "") {
+      response.status(500).json({message: "Name cannot be empty"})
+    }
+    else if( !lastName && lastName.trim() ===""){
+        response.status(500).json({message: "LastName cannot be empty"})
+    }
+    else if(!email && email.trim() === ""){
+        response.status(500).json({message: "Email cannot be empty"})
+    }
+    else if(!password && password.trim() === ""){
+        response.status(500).json({message: "Password cannot be empty"})
+    }
+    else{
+      bcrypt.hash(request.body.password, 10, async function (err, hash) {
         try{
           await userModel.findByIdAndUpdate(id,{
             name: request.body.name, 
@@ -83,6 +98,7 @@ export async function UpdateUser(request: NextApiRequest, response: NextApiRespo
           throw err
         }
     });
+    }
 } 
 
 
