@@ -57,21 +57,21 @@ export async function getAllUser(
     })
 }
 
-export async function UpdateUser(request: NextApiRequest, response: NextApiResponse) {
+export async function UpdateUser(request: NextApiRequest, response: NextApiResponse<Data>) {
     const id = request.query.id
     const { name, lastName, email, password } = request.body
     if(
       !name && name.trim() === "") {
-      response.status(500).json({message: "Name cannot be empty"})
+      response.status(500).json({message: "Name cannot be empty", data: name})
     }
     else if( !lastName && lastName.trim() ===""){
-        response.status(500).json({message: "LastName cannot be empty"})
+        response.status(500).json({message: "LastName cannot be empty", data: lastName})
     }
     else if(!email && email.trim() === ""){
-        response.status(500).json({message: "Email cannot be empty"})
+        response.status(500).json({message: "Email cannot be empty", data: email})
     }
     else if(!password && password.trim() === ""){
-        response.status(500).json({message: "Password cannot be empty"})
+        response.status(500).json({message: "Password cannot be empty", data: password})
     }
     else{
       bcrypt.hash(request.body.password, 10, async function (err, hash) {
