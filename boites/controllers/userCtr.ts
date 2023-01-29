@@ -84,3 +84,26 @@ export async function UpdateUser(request: NextApiRequest, response: NextApiRespo
         }
     });
 } 
+
+
+export async function DeleteUser (request: NextApiRequest, response: NextApiResponse){
+    const id = request.query.id
+    try{
+      await userModel.findByIdAndRemove(id)
+      .then(user=> {
+        if(!user){
+          response.status(500).json({message: "User you wanna delete doesn't exist"})
+        }
+        else{
+          response.status(200).json({message: "User updated"})
+        }
+      })
+      .catch(err => {
+        throw err
+      })
+ 
+    }
+    catch(err){
+      throw err
+    } 
+}
