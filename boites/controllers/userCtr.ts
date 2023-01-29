@@ -95,7 +95,7 @@ export async function DeleteUser (request: NextApiRequest, response: NextApiResp
           response.status(500).json({message: "User you wanna delete doesn't exist"})
         }
         else{
-          response.status(200).json({message: "User updated"})
+          response.status(200).json({message: "User deleted"})
         }
       })
       .catch(err => {
