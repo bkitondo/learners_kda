@@ -84,7 +84,7 @@ export async function UpdateUser(request: NextApiRequest, response: NextApiRespo
           })
           .then(user => {
               if(!user) {
-                response.status(500).json({message: "User you wanna update doesn't exist"})
+                response.status(500).json({message: "User you wanna update doesn't exist", data: user})
               }
               else{
                 response.status(200).json({message: "User updated", data: user})
