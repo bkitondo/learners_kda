@@ -3,38 +3,39 @@ import mongoose from 'mongoose'
 const learnerSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: true,
+    required: true,
   },
   lastName: {
     type: String,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
-    require: true,
+    required: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
   contact: {
     type: Number,
   },
   option: {
     type: String,
-    require: true,
+    required: true,
   },
   description: {
     type: String,
-    require: true,
+    required: true,
   },
   promotion: {
     type: String,
-    require: true,
+    required: true,
   },
   status: {
     type: String,
-    require: true,
+    required: true,
+    default: 'sans emploi',
   },
 })
 export default mongoose.models.Learner || mongoose.model('Learner', learnerSchema)
