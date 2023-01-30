@@ -60,3 +60,24 @@ export async function createOrFindLearner(
     throw error
   }
 }
+
+export async function DeleteLearner(request: NextApiRequest, response: NextApiResponse) {
+  const id = request.query.id
+  try{
+      learnerModel.findByIdAndRemove(id)
+      .then(learner => {
+          if(!learner) {
+            response.status(500).json({message: "Learner you wanna delete doesn't exist"})
+          }
+          else{
+            response.status(200).json({message: "Learner deleted"})
+          }
+      })
+      .catch(err => {
+        throw err
+      })
+  } 
+  catch(err) {
+    throw err
+  }
+}
