@@ -9,18 +9,16 @@ type Data = {
 
 export async function createOrFindUser(
   request: NextApiRequest,
-  response: NextApiResponse<Data>,
+  response: NextApiResponse,
 ) {
   const user = await userModel.findOne({ email: request.body.email })
   try {
     if (user) {
-      response
-        .status(200)
-        .json({ message: 'this user is already created', data: user })
+      response.status(200).json({ message: 'this user is already created' })
     } else {
       const { name, lastName, email } = request.body,
         hash = bcrypt.hashSync(request.body.password, 10)
-        userModel
+      userModel
         .create({
           name,
           lastName,
@@ -41,85 +39,80 @@ export async function createOrFindUser(
   }
 }
 
-export async function getAllUser(
-  request: NextApiRequest,
-  response: NextApiResponse<Data>,
-) {
+export async function getAllUser(request: NextApiRequest, response: NextApiResponse) {
   await userModel
     .find()
     .then(user => {
-      response
-        .status(200)
-        .json({ message: 'users is succesfully found', data: user })
+      if (user) {
+        response.status(200).json({ message: 'users are succesfully found', data: user })
+      } else {
+        response.status(404).json({ message: 'no user found' })
+      }
     })
     .catch(err => {
       throw err
     })
 }
 
-export async function UpdateUser(request: NextApiRequest, response: NextApiResponse<Data>) {
-    const id = request.query.id
-    const { name, lastName, email, password } = request.body
-    if(
-      !name && name.trim() === "") {
-      response.status(500).json({message: "Name cannot be empty", data: name})
-    }
-    else if( !lastName && lastName.trim() ===""){
-        response.status(500).json({message: "LastName cannot be empty", data: lastName})
-    }
-    else if(!email && email.trim() === ""){
-        response.status(500).json({message: "Email cannot be empty", data: email})
-    }
-    else if(!password && password.trim() === ""){
-        response.status(500).json({message: "Password cannot be empty", data: password})
-    }
-    else{
-      bcrypt.hash(request.body.password, 10, async function (err, hash) {
-        try{
-          await userModel.findByIdAndUpdate(id,{
-            name: request.body.name, 
+export async function UpdateUser(
+  request: NextApiRequest,
+  response: NextApiResponse<Data>,
+) {
+  const id = request.query.id
+  const { name, lastName, email, password } = request.body
+  if (!name && name.trim() === '') {
+    response.status(500).json({ message: 'Name cannot be empty', data: name })
+  } else if (!lastName && lastName.trim() === '') {
+    response.status(500).json({ message: 'LastName cannot be empty', data: lastName })
+  } else if (!email && email.trim() === '') {
+    response.status(500).json({ message: 'Email cannot be empty', data: email })
+  } else if (!password && password.trim() === '') {
+    response.status(500).json({ message: 'Password cannot be empty', data: password })
+  } else {
+    bcrypt.hash(request.body.password, 10, async function (err, hash) {
+      try {
+        await userModel
+          .findByIdAndUpdate(id, {
+            name: request.body.name,
             lastName: request.body.lastName,
-            email: request.body.email, 
-            password:hash
+            email: request.body.email,
+            password: hash,
           })
           .then(user => {
-              if(!user) {
-                response.status(500).json({message: "User you wanna update doesn't exist", data: user})
-              }
-              else{
-                response.status(200).json({message: "User updated", data: user})
-              }
+            if (!user) {
+              response
+                .status(500)
+                .json({ message: "User you wanna update doesn't exist", data: user })
+            } else {
+              response.status(200).json({ message: 'User updated', data: user })
+            }
           })
           .catch(err => {
             throw err
           })
-        }
-        catch(err) {
-          throw err
-        }
-    });
-    }
-} 
+      } catch (err) {
+        throw err
+      }
+    })
+  }
+}
 
-
-export async function DeleteUser (request: NextApiRequest, response: NextApiResponse){
-    const id = request.query.id
-    try{
-      await userModel.findByIdAndRemove(id)
-      .then(user=> {
-        if(!user){
-          response.status(500).json({message: "User you wanna delete doesn't exist"})
-        }
-        else{
-          response.status(200).json({message: "User deleted"})
+export async function DeleteUser(request: NextApiRequest, response: NextApiResponse) {
+  const id = request.query.id
+  try {
+    await userModel
+      .findByIdAndRemove(id)
+      .then(user => {
+        if (!user) {
+          response.status(500).json({ message: "User you wanna delete doesn't exist" })
+        } else {
+          response.status(200).json({ message: 'User deleted' })
         }
       })
       .catch(err => {
         throw err
       })
- 
-    }
-    catch(err){
-      throw err
-    } 
+  } catch (err) {
+    throw err
+  }
 }
