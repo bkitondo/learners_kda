@@ -51,7 +51,7 @@ export async function createOrFindAdmin(
     } else {
       response
         .status(200)
-        .json({ message: 'this admin is succesfully found', data: admin })
+        .json({ message: 'this admin is already created', data: admin })
     }
   } catch (err) {
     throw err
