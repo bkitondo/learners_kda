@@ -56,3 +56,70 @@ export async function getAllUser(
       throw err
     })
 }
+
+export async function UpdateUser(request: NextApiRequest, response: NextApiResponse<Data>) {
+    const id = request.query.id
+    const { name, lastName, email, password } = request.body
+    if(
+      !name && name.trim() === "") {
+      response.status(500).json({message: "Name cannot be empty", data: name})
+    }
+    else if( !lastName && lastName.trim() ===""){
+        response.status(500).json({message: "LastName cannot be empty", data: lastName})
+    }
+    else if(!email && email.trim() === ""){
+        response.status(500).json({message: "Email cannot be empty", data: email})
+    }
+    else if(!password && password.trim() === ""){
+        response.status(500).json({message: "Password cannot be empty", data: password})
+    }
+    else{
+      bcrypt.hash(request.body.password, 10, async function (err, hash) {
+        try{
+          await userModel.findByIdAndUpdate(id,{
+            name: request.body.name, 
+            lastName: request.body.lastName,
+            email: request.body.email, 
+            password:hash
+          })
+          .then(user => {
+              if(!user) {
+                response.status(500).json({message: "User you wanna update doesn't exist", data: user})
+              }
+              else{
+                response.status(200).json({message: "User updated", data: user})
+              }
+          })
+          .catch(err => {
+            throw err
+          })
+        }
+        catch(err) {
+          throw err
+        }
+    });
+    }
+} 
+
+
+export async function DeleteUser (request: NextApiRequest, response: NextApiResponse){
+    const id = request.query.id
+    try{
+      await userModel.findByIdAndRemove(id)
+      .then(user=> {
+        if(!user){
+          response.status(500).json({message: "User you wanna delete doesn't exist"})
+        }
+        else{
+          response.status(200).json({message: "User deleted"})
+        }
+      })
+      .catch(err => {
+        throw err
+      })
+ 
+    }
+    catch(err){
+      throw err
+    } 
+}
