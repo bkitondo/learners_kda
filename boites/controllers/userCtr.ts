@@ -83,7 +83,7 @@ export async function UpdateUser(
                 response.status(500).json({message: "User you wanna update doesn't exist", data: user})
               }
               else{
-                response.status(200).json({message: "User updated", data: user})
+                response.status(200).json({message: "User updated", data: null})
               }
           })
           .catch(err => {

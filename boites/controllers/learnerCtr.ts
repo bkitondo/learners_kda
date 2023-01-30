@@ -120,10 +120,10 @@ export async function UpdateLearner(request: NextApiRequest, response: NextApiRe
            })
            .then(learner=> {
                if(!learner){
-                 response.status(500).json({message: "Learner you wanna update doesn't exits", data:null})
+                 response.status(500).json({message: "Learner you wanna update doesn't exits", data: learner})
                }
                else{
-                 response.status(200).json({message: "Learner updated", data: learner})
+                 response.status(200).json({message: "Learner updated", data: null})
                }
            })
            .catch(err =>{
