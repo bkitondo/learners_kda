@@ -73,7 +73,7 @@ export async function UpdateAdmin(request : NextApiRequest, response: NextApiRes
                       response.status(500).json({message: "Admin you wanna update doesn't exist", data: admin})
                     }
                     else{
-                      response.status(200).json({message: "Admin Updated", data: admin})
+                      response.status(200).json({message: "Admin Updated", data: null})
                     }
                 }).catch(err => {
                     throw err
