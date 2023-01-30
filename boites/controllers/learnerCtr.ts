@@ -32,12 +32,13 @@ export async function createOrFindLearner(
       response.status(200).json({ message: 'this learner is already created' })
     } else {
       const hash = bcrypt.hashSync(request.body.password, 10),
-        { name, lastName, email, option, contact, description, status, promotion } =
+        { name, lastName,image, email, option, contact, description, status, promotion } =
           request.body
       learnerModel
         .create({
           name,
           lastName,
+          image,
           email,
           option,
           contact,
