@@ -29,20 +29,27 @@ export async function createOrFindAdmin(
   const admin = await adminModel.findOne({ email: request.body.email })
   try {
     if (!admin) {
-      const hash = bcrypt.hashSync(request.body.password, 10)
-      adminModel
-        .create({
-          email: request.body.email,
-          password: hash,
-        })
-        .then(admin => {
-          response
-            .status(200)
-            .json({ message: 'this admin is succesfuly created ', data: admin })
-        })
-        .catch(error => {
-          throw error
-        })
+      const { email, passwod } = request.body
+      if (!email) {
+        response.status(500).json({ message: 'email required' })
+      } else if (!passwod) {
+        response.status(500).json({ message: 'password required' })
+      } else {
+        const hash = bcrypt.hashSync(request.body.password, 10)
+        adminModel
+          .create({
+            email,
+            password: hash,
+          })
+          .then(admin => {
+            response
+              .status(200)
+              .json({ message: 'this admin is succesfuly created ', data: admin })
+          })
+          .catch(error => {
+            throw error
+          })
+      }
     } else {
       response.status(200).json({ message: 'this admin is already created' })
     }
