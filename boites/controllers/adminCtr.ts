@@ -7,10 +7,7 @@ type Data = {
   data: any
 }
 
-export async function getAllAdmin(
-  request: NextApiRequest,
-  response: NextApiResponse<Data>,
-) {
+export async function getAllAdmin(request: NextApiRequest, response: NextApiResponse) {
   const admin = await adminModel.find()
   try {
     if (admin) {
@@ -18,9 +15,7 @@ export async function getAllAdmin(
         .status(200)
         .json({ message: 'the admins are succesfully found', data: admin })
     } else {
-      response
-        .status(404)
-        .json({ message: 'no admin found', data: admin })
+      response.status(404).json({ message: 'no admin found' })
     }
   } catch (err) {
     throw err
@@ -29,7 +24,7 @@ export async function getAllAdmin(
 
 export async function createOrFindAdmin(
   request: NextApiRequest,
-  response: NextApiResponse<Data>,
+  response: NextApiResponse,
 ) {
   const admin = await adminModel.findOne({ email: request.body.email })
   try {
@@ -49,9 +44,7 @@ export async function createOrFindAdmin(
           throw error
         })
     } else {
-      response
-        .status(200)
-        .json({ message: 'this admin is already created', data: admin })
+      response.status(200).json({ message: 'this admin is already created' })
     }
   } catch (err) {
     throw err

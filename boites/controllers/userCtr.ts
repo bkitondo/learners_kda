@@ -9,12 +9,12 @@ type Data = {
 
 export async function createOrFindUser(
   request: NextApiRequest,
-  response: NextApiResponse<Data>,
+  response: NextApiResponse,
 ) {
   const user = await userModel.findOne({ email: request.body.email })
   try {
     if (user) {
-      response.status(200).json({ message: 'this user is already created', data: user })
+      response.status(200).json({ message: 'this user is already created' })
     } else {
       const { name, lastName, email } = request.body,
         hash = bcrypt.hashSync(request.body.password, 10)
@@ -39,17 +39,14 @@ export async function createOrFindUser(
   }
 }
 
-export async function getAllUser(
-  request: NextApiRequest,
-  response: NextApiResponse<Data>,
-) {
+export async function getAllUser(request: NextApiRequest, response: NextApiResponse) {
   await userModel
     .find()
     .then(user => {
       if (user) {
         response.status(200).json({ message: 'users are succesfully found', data: user })
       } else {
-        response.status(404).json({ message: 'no user found', data: user })
+        response.status(404).json({ message: 'no user found' })
       }
     })
     .catch(err => {
