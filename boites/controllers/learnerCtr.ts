@@ -31,30 +31,43 @@ export async function createOrFindLearner(
     if (learner) {
       response.status(200).json({ message: 'this learner is already created' })
     } else {
-      const hash = bcrypt.hashSync(request.body.password, 10),
-        { name, lastName,image, email, option, contact, description, status, promotion } =
-          request.body
-      learnerModel
-        .create({
-          name,
-          lastName,
-          image,
-          email,
-          option,
-          contact,
-          description,
-          status,
-          promotion,
-          password: hash,
-        })
-        .then(learner => {
-          response
-            .status(200)
-            .json({ message: 'learner succesfully created', data: learner })
-        })
-        .catch(err => {
-          throw err
-        })
+      const {
+        name,
+        lastName,
+        email,
+        option,
+        contact,
+        description,
+        status,
+        promotion,
+        password,
+      } = request.body
+
+      if (name && lastName && email && option && description && promotion && password) {
+        const hash = bcrypt.hashSync(password, 10)
+        learnerModel
+          .create({
+            name,
+            lastName,
+            email,
+            option,
+            contact,
+            description,
+            status,
+            promotion,
+            password: hash,
+          })
+          .then(learner => {
+            response
+              .status(200)
+              .json({ message: 'learner succesfully created', data: learner })
+          })
+          .catch(err => {
+            throw err
+          })
+      } else {
+        response.status(500).json({ message: 'fill in the empty fields' })
+      }
     }
   } catch (error) {
     throw error
