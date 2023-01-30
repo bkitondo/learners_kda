@@ -1,5 +1,5 @@
 import { connexion } from '@/boites/connexionDb/connexion'
-import { getAllAdmin, createOrFindAdmin } from '@/boites/controllers/adminCtr'
+import { getAllLearner } from '@/boites/controllers/learnerCtr'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -12,9 +12,8 @@ export default async function handler(
   response: NextApiResponse<Data>,
 ) {
   await connexion()
-  if (request.method === 'POST') {
-    return createOrFindAdmin(request, response)
-  } else if (request.method === 'GET') {
-    return getAllAdmin(request, response)
+
+  if (request.method === 'GET') {
+    return getAllLearner(request, response)
   }
 }
