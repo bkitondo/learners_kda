@@ -66,7 +66,7 @@ export async function createOrFindLearner(
             throw err
           })
       } else {
-        response.status(500).json({ message: 'fill in the empty fields' })
+        response.status(500).json({ message: 'please, fill in the empty fields' })
       }
     }
   } catch (error) {
