@@ -29,20 +29,27 @@ export async function createOrFindAdmin(
   const admin = await adminModel.findOne({ email: request.body.email })
   try {
     if (!admin) {
-      const hash = bcrypt.hashSync(request.body.password, 10)
-      adminModel
-        .create({
-          email: request.body.email,
-          password: hash,
-        })
-        .then(admin => {
-          response
-            .status(200)
-            .json({ message: 'this admin is succesfuly created ', data: admin })
-        })
-        .catch(error => {
-          throw error
-        })
+      const { email, passwod } = request.body
+      if (!email) {
+        response.status(500).json({ message: 'email required' })
+      } else if (!passwod) {
+        response.status(500).json({ message: 'password required' })
+      } else {
+        const hash = bcrypt.hashSync(request.body.password, 10)
+        adminModel
+          .create({
+            email,
+            password: hash,
+          })
+          .then(admin => {
+            response
+              .status(200)
+              .json({ message: 'this admin is succesfuly created ', data: admin })
+          })
+          .catch(error => {
+            throw error
+          })
+      }
     } else {
       response.status(200).json({ message: 'this admin is already created' })
     }
@@ -58,36 +65,34 @@ export async function UpdateAdmin(
   const id = request.query.id
   const { email, password } = request.body
 
-  if (!email && email.trim() === '') {
-    response.status(500).json({ message: 'Email cannot be empty', data: email })
-  }
-  if (!password && password.trim() === '') {
-    response.status(500).json({ message: 'Password cannot be empty', data: password })
-  } else {
-    bcrypt.hash(request.body.password, 10, async function (err, hash) {
-      try {
-        await adminModel
-          .findByIdAndUpdate(id, {
-            email: request.body.email,
-            password: hash,
-          })
-          .then(admin => {
-            if (!admin) {
-              response
-                .status(500)
-                .json({ message: "Admin you wanna update doesn't exist", data: admin })
-            } else {
-              response.status(200).json({ message: 'Admin Updated', data: admin })
-            }
-          })
-          .catch(err => {
-            throw err
-          })
-      } catch (err) {
-        throw err
+          if(!email && email.trim() === "") {
+              response.status(500).json({message: "Email cannot be empty", data: email})
+          }
+          if(!password && password.trim() === "") {
+            response.status(500).json({message: "Password cannot be empty", data: password})
+          }
+          else{
+            bcrypt.hash(request.body.password, 10, async function (err, hash) {
+              try{
+                await adminModel.findByIdAndUpdate(id, {
+                  email: request.body.email,
+                  password: hash,
+                }).then(admin => { 
+                    if(!admin){
+                      response.status(500).json({message: "Admin you wanna update doesn't exist", data: admin})
+                    }
+                    else{
+                      response.status(200).json({message: "Admin Updated", data: null})
+                    }
+                }).catch(err => {
+                    throw err
+                })
+              }
+              catch (err) {
+                throw err
+              }
+          });
       }
-    })
-  }
 }
 
 export async function DeleteAdmin(request: NextApiRequest, response: NextApiResponse) {

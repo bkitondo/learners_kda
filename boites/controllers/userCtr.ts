@@ -16,23 +16,27 @@ export async function createOrFindUser(
     if (user) {
       response.status(200).json({ message: 'this user is already created' })
     } else {
-      const { name, lastName, email } = request.body,
-        hash = bcrypt.hashSync(request.body.password, 10)
-      userModel
-        .create({
-          name,
-          lastName,
-          email,
-          password: hash,
-        })
-        .then(user => {
-          response
-            .status(200)
-            .json({ message: ' user is succesfully created', data: user })
-        })
-        .catch(err => {
-          throw err
-        })
+      const { name, lastName, email, password } = request.body
+      if (name && password && lastName && email) {
+        const hash = bcrypt.hashSync(password, 10)
+        userModel
+          .create({
+            name,
+            lastName,
+            email,
+            password: hash,
+          })
+          .then(user => {
+            response
+              .status(200)
+              .json({ message: ' user is succesfully created', data: user })
+          })
+          .catch(err => {
+            throw err
+          })
+      } else {
+        response.status(500).json({ message: 'fill in the empty fields' })
+      }
     }
   } catch (error) {
     throw error
@@ -79,13 +83,12 @@ export async function UpdateUser(
             password: hash,
           })
           .then(user => {
-            if (!user) {
-              response
-                .status(500)
-                .json({ message: "User you wanna update doesn't exist", data: user })
-            } else {
-              response.status(200).json({ message: 'User updated', data: user })
-            }
+              if(!user) {
+                response.status(500).json({message: "User you wanna update doesn't exist", data: user})
+              }
+              else{
+                response.status(200).json({message: "User updated", data: null})
+              }
           })
           .catch(err => {
             throw err
