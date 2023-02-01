@@ -1,10 +1,11 @@
 import adminModel from '../models/adminModel'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken"
 
 type Data = {
   message: String
-  data: any
+  data: any,
 }
 
 export async function getAllAdmin(request: NextApiRequest, response: NextApiResponse) {
@@ -115,13 +116,22 @@ export async function DeleteAdmin(request: NextApiRequest, response: NextApiResp
   }
 }
 
-export async function LoginAdmin(request: NextApiRequest, response: NextApiResponse<Data>) {
+export async function LoginAdmin(request: NextApiRequest, response: NextApiResponse) {
 
   const admin = await adminModel.findOne({ email: request.body.email});
   if (admin) {
     const checkPassword = await bcrypt.compare(request.body.password, admin.password);
     if (checkPassword) {
-        response.status(200).json({ message: "User login Successfully", data: admin, });
+        response.status(200).json({ 
+          data: admin,
+            token: "Bearer "+ jwt.sign(
+              { adminId: admin._id }, 
+              "RANDOM_TOKEN_SECRET", 
+              { expiresIn: "24h", }
+            ),
+            success: true,
+            message: "User Find",
+        });
     } else {
         response.status(400).json({message:"Email or Password incorrecte", data: null});   
     }
