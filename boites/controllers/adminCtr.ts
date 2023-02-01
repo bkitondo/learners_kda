@@ -114,3 +114,19 @@ export async function DeleteAdmin(request: NextApiRequest, response: NextApiResp
     throw err
   }
 }
+
+export async function LoginAdmin(request: NextApiRequest, response: NextApiResponse<Data>) {
+
+  const admin = await adminModel.findOne({ email: request.body.email});
+  if (admin) {
+    const checkPassword = await bcrypt.compare(request.body.password, admin.password);
+    if (checkPassword) {
+        response.status(200).json({ message: "User login Successfully", data: admin, });
+    } else {
+        response.status(400).json({message:"Email or Password incorrecte", data: null});   
+    }
+  } else {
+    return response.status(400).send({message:"Email or Password incorrecte", data:null });
+  }
+
+}
