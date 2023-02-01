@@ -1,7 +1,6 @@
 import adminModel from '../models/adminModel'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import bcrypt, { compare } from 'bcrypt'
-import jwt from "jsonwebtoken";
+import bcrypt from 'bcrypt'
 
 type Data = {
   message: String
@@ -30,14 +29,14 @@ export async function createOrFindAdmin(
   const admin = await adminModel.findOne({ email: request.body.email })
   try {
     if (!admin) {
-      const { email, password } = request.body
-      if (!email && email.trim() ==="") {
+      const { email, passwod } = request.body
+      if (!email) {
         response.status(500).json({ message: 'email required' })
-      } else if (!password && password.trim() ==="") {
+      } else if (!passwod) {
         response.status(500).json({ message: 'password required' })
       } else {
-        bcrypt.hash(request.body.password, 10, async function(err, hash) {
-          adminModel
+        const hash = bcrypt.hashSync(request.body.password, 10)
+        adminModel
           .create({
             email,
             password: hash,
@@ -50,7 +49,6 @@ export async function createOrFindAdmin(
           .catch(error => {
             throw error
           })
-        })
       }
     } else {
       response.status(200).json({ message: 'this admin is already created' })
@@ -116,65 +114,3 @@ export async function DeleteAdmin(request: NextApiRequest, response: NextApiResp
     throw err
   }
 }
-
-export async function LoginAdmin(request: NextApiRequest, response: NextApiResponse<Data>) {
-
-  const admin = await adminModel.findOne({ email: request.body.email});
-  if (admin) {
-    const checkPassword = await bcrypt.compare(request.body.password, admin.password);
-    if (checkPassword) {
-        response.status(200).json({ message: "User login Successfully", data: admin, });
-    } else {
-        response.status(400).json({message:"Email or Password incorrecte", data: null});   
-    }
-  } else {
-    return response.status(400).send({message:"Numéro de téléphone ou mot de passe incorrecte", data:null });
-  }
-}
-
-/*
-
- const valid = bcrypt.compare(request.body.password, admin.password)
-    try{
-        if(!valid) {
-          response.status(400).json({message: "No found", data: null})
-        }
-        else{
-          response.status(200).json({message: "Succesfull", data: null})
-        }
-    }
-    catch(err) {
-      throw err
-    }
-
-*/
-
-
-/*
-export async function LoginAmin(request: NextApiRequest, response: NextApiResponse<Data>){
-    const { email, password } = request.body
-    const admin = await adminModel.findOne({email, password})
-    try{
-          if(!admin){
-            response.status(401).json({message: "Email or Password incorrect", data: null})
-          }
-          else{
-            const valid = bcrypt.compare(request.body.password, admin.password);
-            try{
-              if(!valid) {
-                response.status(401).json({message: "Email or password incorrect", data: null})
-              }
-              else{
-                response.status(200).json({message: "Admin found", data: null})
-              }
-            }
-            catch(err){
-              throw err
-            }
-          }
-    }
-    catch(err) {
-      throw err
-    }
-}
-*/
