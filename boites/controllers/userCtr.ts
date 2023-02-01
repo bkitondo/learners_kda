@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import userModel from '../models/userModel'
+import jwt from "jsonwebtoken"
+import { NextResponse } from 'next/server'
 
 type Data = {
   data: any
@@ -119,3 +121,59 @@ export async function DeleteUser(request: NextApiRequest, response: NextApiRespo
     throw err
   }
 }
+
+export async function LoginUser(request: NextApiRequest, response: NextApiResponse){
+    const user = await userModel.findOne({email: request.body.email})
+
+    if(!user) {
+      response.status(400).json({message: "Email or password incorrect"})
+    }
+    else{
+      const valid = await bcrypt.compare(request.body.password, user.password)
+      try{
+        if(valid){
+            response.status(200).json({
+              user,
+              token: "Bearer " + jwt.sign(
+                { userId: user._id },
+                "RANDOM_TOKEN_SECRET",
+                { expiresIn : "24h" }
+                )
+            })
+        }
+        else{
+          response.status(400).json({message: "Email or password incorrect"})
+        }
+      }
+      catch(err){
+        throw err
+      }
+    }
+}
+
+/*
+export async function LoginUser(request: NextApiRequest, response: NextApiResponse) {
+
+  const user = await userModel.findOne({ email: request.body.email});
+  if (user) {
+    const checkPassword = await bcrypt.compare(request.body.password, user.password);
+    if (checkPassword) {
+        response.status(200).json({ 
+          user,
+            token: "Bearer "+ jwt.sign(
+              { userId: user._id }, 
+              "RANDOM_TOKEN_SECRET", 
+              { expiresIn: "24h", }
+            ),
+            success: true,
+            message: "User Find",
+        });
+    } else {
+        response.status(400).json({message:"Email or Password incorrecte", data: null});   
+    }
+  } else {
+    return response.status(400).send({message:"Email or Password incorrecte", data:null });
+  }
+
+}
+*/

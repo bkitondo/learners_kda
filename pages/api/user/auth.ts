@@ -1,5 +1,5 @@
 import { connexion } from "@/boites/connexionDb/connexion";
-import { LoginAdmin } from "@/boites/controllers/adminCtr";
+import { LoginUser } from "@/boites/controllers/userCtr";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
@@ -8,9 +8,8 @@ type Data = {
 }
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse<Data>) {
-    
     await connexion()
     if(request.method === "POST"){
-        return LoginAdmin(request, response)
+        return LoginUser(request, response)
     }
 }
