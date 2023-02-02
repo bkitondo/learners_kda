@@ -1,6 +1,7 @@
 import learnerModel from '../models/learnerModel'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken"
 
 type Data = {
   message: String
@@ -34,6 +35,7 @@ export async function createOrFindLearner(
       const {
         name,
         lastName,
+        image,
         email,
         option,
         contact,
@@ -43,12 +45,13 @@ export async function createOrFindLearner(
         password,
       } = request.body
 
-      if (name && lastName && email && option && description && promotion && password) {
+      if (name && lastName && image && email && option && description && promotion && password) {
         const hash = bcrypt.hashSync(password, 10)
         learnerModel
           .create({
             name,
             lastName,
+            image,
             email,
             option,
             contact,
@@ -148,5 +151,34 @@ export async function UpdateLearner(request: NextApiRequest, response: NextApiRe
          }
     });
     
+    }
+}
+
+export async function LoginLearner(request: NextApiRequest, response: NextApiResponse){
+    const user = await learnerModel.findOne({ email: request.body.email})
+
+    try{
+      if(!user){
+        response.status(400).json({ message: "Email or Password incorrect" })
+      }
+      else{
+        const valid = await bcrypt.compare(request.body.password, user.password)
+          if(!valid){
+              response.status(400).json({ message: "Email or Password incorrect" })
+          }
+          else{
+            response.status(200).json({ 
+                data: user,
+                token: "Baerer " + jwt.sign(
+                  { LearnerId: user._id },
+                  "RANDOM_TOKEN_SECRET",
+                  { expiresIn: "24h" }
+                  )
+             })
+          }
+      }
+    }
+    catch(err){
+      throw err
     }
 }
