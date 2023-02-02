@@ -122,6 +122,28 @@ export async function DeleteUser(request: NextApiRequest, response: NextApiRespo
   }
 }
 
+export async function FoundOneUser(request: NextApiRequest, response: NextApiResponse<Data>){
+    const id = request.query.id
+
+    try{
+        await userModel.findById(id)
+        .then(user => {
+            if(!user){
+              response.status(400).json({ message: "User Not Found", data: null })
+            }
+            else{
+              response.status(400).json({ message: "User Found suucesfully", data: user })
+            }
+        })
+        .catch(err => {
+            throw err
+        })
+    }
+    catch(err){
+        throw err
+    }
+}
+
 export async function LoginUser(request: NextApiRequest, response: NextApiResponse){
     const user = await userModel.findOne({email: request.body.email})
 

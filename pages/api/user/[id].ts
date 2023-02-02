@@ -1,5 +1,5 @@
 import { connexion } from "@/boites/connexionDb/connexion";
-import { DeleteUser, UpdateUser } from "@/boites/controllers/userCtr";
+import { DeleteUser, FoundOneUser, UpdateUser } from "@/boites/controllers/userCtr";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
@@ -11,5 +11,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
     if(request.method === "DELETE"){
         return DeleteUser(request, response)
     }
-    
+    else if(request.method === "GET"){
+        return FoundOneUser(request, response)
+    }
 }
