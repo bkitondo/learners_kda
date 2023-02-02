@@ -154,6 +154,25 @@ export async function UpdateLearner(request: NextApiRequest, response: NextApiRe
     }
 }
 
+export async function FoundOneLearner(request: NextApiRequest, response: NextApiResponse<Data>){
+    const id = request.query.id
+
+    try{
+      await learnerModel.findById(id)
+      .then(learner => {
+          if(!learner){
+              response.status(400).json({ message: "Learner Not Found", data: null })
+          }
+          else{
+            response.status(200).json({ message: "Learner Found succesfully", data: learner })
+          }
+      })
+    }
+    catch(err){
+      throw err
+    }
+}
+
 export async function LoginLearner(request: NextApiRequest, response: NextApiResponse){
     const user = await learnerModel.findOne({ email: request.body.email})
 
