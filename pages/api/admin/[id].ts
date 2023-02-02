@@ -1,5 +1,5 @@
 import { connexion } from "@/boites/connexionDb/connexion"
-import { DeleteAdmin, UpdateAdmin } from "@/boites/controllers/adminCtr"
+import { DeleteAdmin, FoundOnAdmin, UpdateAdmin } from "@/boites/controllers/adminCtr"
 import { NextApiRequest, NextApiResponse } from "next"
 
 
@@ -16,5 +16,7 @@ export default async function handler(request : NextApiRequest, response: NextAp
     }
     else if(request.method === "DELETE"){
         return DeleteAdmin(request, response)
+    }else if(request.method === "GET"){
+        return FoundOnAdmin(request, response)
     }
 }

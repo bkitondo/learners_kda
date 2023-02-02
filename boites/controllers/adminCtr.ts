@@ -116,6 +116,25 @@ export async function DeleteAdmin(request: NextApiRequest, response: NextApiResp
   }
 }
 
+export async function FoundOnAdmin(request: NextApiRequest, response: NextApiResponse<Data>){
+    const id = request.query.id
+
+    try{
+      await adminModel.findById(id)
+      .then(admin => {
+          if(!admin){
+              response.status(400).json({ message: "Admin Not Found", data: null })
+          }
+          else{
+            response.status(400).json({ message: "Admin Found succesfully", data: admin })
+          }
+      })
+    }
+    catch(err){
+      throw err
+    }
+}
+
 export async function LoginAdmin(request: NextApiRequest, response: NextApiResponse) {
 
   const admin = await adminModel.findOne({ email: request.body.email});
