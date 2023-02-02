@@ -1,6 +1,6 @@
 
 import { connexion } from '@/boites/connexionDb/connexion'
-import { DeleteLearner, UpdateLearner } from '@/boites/controllers/learnerCtr'
+import { DeleteLearner, FoundOneLearner, UpdateLearner } from '@/boites/controllers/learnerCtr'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
@@ -15,5 +15,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
     }
     if(request.method === "PUT"){
         return UpdateLearner(request, response)
+    }
+    if(request.method === "GET"){
+        return FoundOneLearner(request, response)
     }
 }
