@@ -1,10 +1,11 @@
 import adminModel from '../models/adminModel'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken"
 
 type Data = {
   message: String
-  data: any
+  data: any,
 }
 
 export async function getAllAdmin(request: NextApiRequest, response: NextApiResponse) {
@@ -113,4 +114,48 @@ export async function DeleteAdmin(request: NextApiRequest, response: NextApiResp
   } catch (err) {
     throw err
   }
+}
+
+export async function FoundOnAdmin(request: NextApiRequest, response: NextApiResponse<Data>){
+    const id = request.query.id
+
+    try{
+      await adminModel.findById(id)
+      .then(admin => {
+          if(!admin){
+              response.status(400).json({ message: "Admin Not Found", data: null })
+          }
+          else{
+            response.status(400).json({ message: "Admin Found succesfully", data: admin })
+          }
+      })
+    }
+    catch(err){
+      throw err
+    }
+}
+
+export async function LoginAdmin(request: NextApiRequest, response: NextApiResponse) {
+
+  const admin = await adminModel.findOne({ email: request.body.email});
+  if (admin) {
+    const checkPassword = await bcrypt.compare(request.body.password, admin.password);
+    if (checkPassword) {
+        response.status(200).json({ 
+          data: admin,
+            token: "Bearer "+ jwt.sign(
+              { adminId: admin._id }, 
+              "RANDOM_TOKEN_SECRET", 
+              { expiresIn: "24h", }
+            ),
+            success: true,
+            message: "User Find",
+        });
+    } else {
+        response.status(400).json({message:"Email or Password incorrecte", data: null});   
+    }
+  } else {
+    return response.status(400).send({message:"Email or Password incorrecte", data:null });
+  }
+
 }
