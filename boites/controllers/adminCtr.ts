@@ -30,10 +30,10 @@ export async function createOrFindAdmin(
   const admin = await adminModel.findOne({ email: request.body.email })
   try {
     if (!admin) {
-      const { email, passwod } = request.body
+      const { email, password } = request.body
       if (!email) {
         response.status(500).json({ message: 'email required' })
-      } else if (!passwod) {
+      } else if (!password) {
         response.status(500).json({ message: 'password required' })
       } else {
         const hash = bcrypt.hashSync(request.body.password, 10)
