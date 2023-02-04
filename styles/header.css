@@ -1,0 +1,52 @@
+
+.header{
+    display: flex;
+    height: 62px;
+    background-color: #111727;
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 71px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 3px 15px rgba(49, 5, 5, 0.5);
+    z-index: 10;
+  }
+
+  .link{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 15px;
+    transition: 0.4s ease;
+}
+
+.link:hover{
+    text-decoration: none;
+    background-color: rgba(17, 23, 39, 0.4);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+
+.logo{
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.nav-link .link{
+    margin-left: 93px;
+    font-weight: 400;
+}
+
+.important{
+    border: 1px solid rgba(255, 255, 255, 0.87);
+    padding: 4px 10px;
+    border-radius: 7px;
+}
+.important:hover{
+    background-color: #394c81;
+    color: #FFF;
+}

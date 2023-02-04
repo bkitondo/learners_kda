@@ -17,13 +17,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        {/* <Header /> */}
-        <h1 className={tab}>
-          Hello world!
-        </h1>
+        <Header />
       </div>
     </>
   );
 }
-
-const tab = "text-3xl font-bold underline text-bluetail text-12"
