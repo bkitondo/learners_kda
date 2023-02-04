@@ -29,7 +29,7 @@ function Learners() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 dignissimos eaque totam. Quidem, perferendi. perferendis.
               </div>
-              <div className="detail">Detail</div>
+              <div className="retail">retail</div>
             </div>
           </div>
           <div className="container-learner">
@@ -46,7 +46,7 @@ function Learners() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 dignissimos eaque totam. Quidem, perferendi. perferendis.
               </div>
-              <div className="detail">Detail</div>
+              <div className="retail">retail</div>
             </div>
           </div>
           <div className="container-learner">
@@ -63,7 +63,7 @@ function Learners() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 dignissimos eaque totam. Quidem, perferendi. perferendis.
               </div>
-              <div className="detail">Detail</div>
+              <div className="retail">retail</div>
             </div>
           </div>
           <div className="container-learner">
@@ -80,7 +80,7 @@ function Learners() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 dignissimos eaque totam. Quidem, perferendi. perferendis.
               </div>
-              <div className="detail">Detail</div>
+              <div className="retail">retail</div>
             </div>
           </div>
           <div className="container-learner">
@@ -97,7 +97,7 @@ function Learners() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
                 dignissimos eaque totam. Quidem, perferendi. perferendis.
               </div>
-              <div className="detail">Detail</div>
+              <div className="retail">retail</div>
             </div>
           </div>
         </div>

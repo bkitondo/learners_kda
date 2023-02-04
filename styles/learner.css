@@ -4,7 +4,7 @@
     padding: 0 71px;
 }
 
-.detail{
+.retail{
     color: #111727;
     font-size: 12px;
     font-weight: 700;
@@ -55,19 +55,19 @@
 
 .msg-alert p{
     width: 600px;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
     margin-bottom: 5px;
     color: #111727;
 }
 
 .msg-alert h2{
-    font-weight: 800;
+    font-weight: 600;
     font-size: 18px;
     padding: 10px 0;
 }
 
-.detail{
+.retail{
     padding: 5px 8px;
 }
 
