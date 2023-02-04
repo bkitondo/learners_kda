@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import Footer from "@/component/Footer";
 import Header from "@/component/Header";
 import Main from "@/component/Main"
+import Learner from "@/component/Learner"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function Home() {
       <div>
         <Header />
         <Main />
+        <Learner />
       </div>
     </>
   );
