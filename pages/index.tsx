@@ -1,13 +1,14 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
-import Footer from "@/component/Footer";
-import Header from "@/component/Header";
-import Main from "@/component/Main"
-import Learner from "@/component/Learner"
+import Head from 'next/head'
+import Image from 'next/image'
+import { Inter } from '@next/font/google'
+import styles from '@/styles/Home.module.css'
+import Footer from '@/component/Footer'
+import Header from '@/component/Header'
+import Main from '@/component/Main'
+import Learner from '@/component/Learner'
+import DispalyLeaner from '@/component/AllLearner'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
@@ -20,10 +21,10 @@ export default function Home() {
       </Head>
       <div>
         <Header />
-        <Main />
-        <Learner />
-        <Footer/>
+        {/* <Main /> */}
+        <DispalyLeaner />
+        <Footer />
       </div>
     </>
-  );
+  )
 }
