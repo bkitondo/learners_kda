@@ -21,7 +21,7 @@ module.exports = {
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
       'blackrussian': '#111727',
-      'Isabelline': '#F2F0EE'
+      'isabelline': '#F2F0EE'
       
     },
     fontSize: {
@@ -34,6 +34,7 @@ module.exports = {
       '20': '20px',
       '24': '24px',
       '26': '26px',
+      '71': '71px'
     },
     borderRaduis: {
       '2': '2px',
