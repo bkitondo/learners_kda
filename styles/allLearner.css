@@ -1,6 +1,5 @@
 .input {
   margin-top: 18px;
-  /* position: absolute; */
   border: 0.5px solid rgba(255, 255, 255, 0.4);
   background: transparent;
   padding: 5px 23px;
@@ -14,4 +13,35 @@
   display: flex;
   justify-content: space-between;
   width: 80%;
+}
+.profil {
+  width: 210px;
+  max-height: 240px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+.containerItem {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sectionLearner {
+  padding: 0px 70px;
+}
+.item {
+  width: 210px;
+  height: auto;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: 0.5s ease;
+  margin: 10px 15px 10px 0;
+}
+.title {
+  color: #000;
+  font-size: 24px;
+  font-weight: 'bold';
+  padding: 50px 0px;
+}
+.paragraph {
+  width: 60%;
+  padding-bottom: 50px;
 }
