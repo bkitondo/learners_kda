@@ -22,6 +22,7 @@ export default function Home() {
         <Header />
         <Main />
         <Learner />
+        <Footer/>
       </div>
     </>
   );
