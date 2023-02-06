@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
@@ -6,8 +7,15 @@ import Footer from "@/component/Footer";
 import Header from "@/component/Header";
 import Main from "@/component/Main"
 import Learner from "@/component/Learner"
+=======
+import Head from 'next/head'
+import Image from 'next/image'
+import { Inter } from '@next/font/google'
+import styles from '@/styles/Home.module.css'
+import Footer from '@/component/Footer'
+>>>>>>> 57376f2 (feat:Add footer component)
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
@@ -18,6 +26,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+<<<<<<< HEAD
       <div>
         <Header />
         <Main />
@@ -26,3 +35,14 @@ export default function Home() {
     </>
   );
 }
+=======
+      <main>
+        <Footer/>
+        {/* <h1 className={tab}>Hello world!</h1> */}
+      </main>
+    </>
+  )
+}
+
+// const tab = 'text-3xl font-bold underline text-red text-50'
+>>>>>>> 57376f2 (feat:Add footer component)
