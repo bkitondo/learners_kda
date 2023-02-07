@@ -3,7 +3,7 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import DisplayLeaner from "../../component/AllLearner";
 
-function index() {
+function Categories() {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ function index() {
   );
 }
 
-export default index;
+export default Categories;
