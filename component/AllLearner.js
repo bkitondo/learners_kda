@@ -13,7 +13,7 @@ export default function DisplayLeaner() {
             Contacter un developpeur(se) web ou un marketeur(se) digital qui vous convient
             pour que votre entreprise soit numerisée comme vous y pensez.
           </p>
-          <div className="inputContainer">
+          <div className="inputContaire">
             <input className="input" placeholder="Recherche par nom" type="text" />
             <input
               className="input"
