@@ -1,9 +1,16 @@
 import React from 'react'
+import Footer from '../../component/Footer'
+import Header from '../../component/Header'
+import Retail from '../../component/Retail'
 
-function index() {
+function ContainerRetail() {
   return (
-    <div>index</div>
+    <>
+        <Header />
+        <Retail />
+        <Footer />
+    </>
   )
 }
 
-export default index
+export default ContainerRetail
