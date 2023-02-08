@@ -11,11 +11,11 @@ function Header() {
         <Link href="/" className="link">
           Accueil
         </Link>
-        <Link href="#apropos" className="link">
-          A propos
-        </Link>
         <Link href="/categories" className="link">
           Categorie
+        </Link>
+        <Link href="about" className="link">
+          A propos
         </Link>
         <Link href="#s'inscrire" className="link">
           S inscrire

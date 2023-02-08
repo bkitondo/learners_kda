@@ -6,6 +6,8 @@ import '../styles/learner.css'
 import '../styles/footer.css'
 import '../styles/allLearner.css'
 import '../styles/retail.css'
+import '../styles/about.css'
+import '../styles/fontAbout.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} /> 

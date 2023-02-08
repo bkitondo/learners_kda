@@ -2,20 +2,12 @@ import React from "react";
 import Image from "next/image";
 import image from "../img/main.jpg";
 import Link from "next/link";
+import FontRetail from "./FontRetail";
 
 function Retail() {
   return (
     <>
-      <div className="containe-retail">
-        <div className="alert-msg">
-          <h2>Voulez vous rendre votre sevice numerique ?</h2>
-          <p>
-            Contacter un developpeur web ou un marketeur digital qui vous
-            convient pour que votre entreprise soit numerisée comme vous y
-            pensez.
-          </p>
-        </div>
-      </div>
+      <FontRetail />
       <div className="retail-leaner">
         <div className="img-retail">
           <Image src={image} alt="" className="big-img" title="" />

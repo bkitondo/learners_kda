@@ -1,0 +1,56 @@
+.blog-about{
+    height: 250px;
+    background-image: url("../img/pexels-antoni-shkraba-6266980.jpg");
+    padding-top: 120px;
+    text-align: center;
+    color: #111727;
+}
+
+.blog-about h2{
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+
+.link-logo span{
+    text-decoration: underline;
+    margin: 50px;
+}
+
+.link-logo span:hover{
+    text-decoration: none;
+}
+
+.about-us{
+    display: flex;
+    margin: 100px 71px;
+}
+
+.about-us .content-about{
+    width: 50%;
+    padding-right: 20px;
+    line-height: 1.7;
+}
+
+.content-about h2{
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.content-about p{
+    margin: 10px 0;
+    opacity: 0.5;
+}
+
+.about-us .img-about{
+    width: 50%;
+}
+.img-about{
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img//mk2.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    object-fit: cover;
+    height: 300px;
+}
