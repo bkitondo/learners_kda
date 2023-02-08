@@ -4,18 +4,18 @@ import React from "react";
 function Header() {
   return (
     <header className="header">
-      <Link href="#accueil" className="link logo">
+      <Link href="/" className="link logo">
         <h1 className="logo">Logo</h1>
       </Link>
       <nav className="nav-link">
-        <a href="#accueil" className="link">
+        <Link href="/" className="link">
           Accueil
-        </a>
-        <Link href="#apropos" className="link">
-          A propos
         </Link>
-        <Link href="#categories" className="link">
+        <Link href="/categories" className="link">
           Categorie
+        </Link>
+        <Link href="about" className="link">
+          A propos
         </Link>
         <Link href="#s'inscrire" className="link">
           S inscrire

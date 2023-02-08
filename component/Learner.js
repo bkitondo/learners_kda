@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import ImageMain from "../img/main.jpg";
+import Link from "next/link";
 
 function Learners() {
   return (
@@ -33,7 +34,7 @@ function Learners() {
             </div>
           </div>
           <div className="container-learner">
-            <div className="blog-learner">
+            <Link href="/retail" className="blog-learner">
               <Image
                 src={ImageMain}
                 alt="image of main page"
@@ -47,7 +48,7 @@ function Learners() {
                 dignissimos eaque totam. Quidem, perferendi. perferendis.
               </div>
               <div className="retail">retail</div>
-            </div>
+            </Link>
           </div>
           <div className="container-learner">
             <div className="blog-learner">

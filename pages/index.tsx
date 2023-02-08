@@ -21,8 +21,9 @@ export default function Home() {
       </Head>
       <div>
         <Header />
-        {/* <Main /> */}
-        <DispalyLeaner />
+        <Main />
+        <Learner />
+        {/* <DispalyLeaner /> */}
         <Footer />
       </div>
     </>

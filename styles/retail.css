@@ -1,0 +1,123 @@
+.containe-retail{
+    color: black;
+    padding-top: 100px;
+    height: 380px;
+    background-image: linear-gradient(to top, rgba(14, 7, 7, 0.9), rgba(0, 0, 0, 0.7)), url('../img/pexels-antoni-shkraba-6266980.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 40px 71px 0;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    }
+    
+    .retail-leaner{
+    margin: 50px 71px;
+    font-size: 15px;
+    }
+    
+    .retail-leaner{
+    display: flex;
+    }
+    
+    .img-retail{
+    width: 60%;
+    height: auto;
+    background-color: rgba(242, 240, 238, 0.2);
+    box-shadow: 0 1px 2px 0px rgba(110, 106, 106, 0.2)
+    }
+    
+    .big-img{
+    height: 320px;
+    object-fit: cover;
+    object-position: center top;
+    }
+    
+    .retail-container{
+    width: 40%;
+    padding: 0 0 0 20px;
+    }
+    
+    .retail-info, .retail-description{
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px;
+    transition: 2ms ease;
+    text-decoration: underline;
+    }
+    
+    .retail-description{
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px;
+    transition: 2ms ease;
+    text-decoration: none;
+    }
+    
+    .retail-info:hover{
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px;
+    text-decoration: underline;
+    }
+    
+    .retail-description:hover{
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px;
+    text-decoration: underline;
+    }
+    
+    .top-profil .name, .enterprise, .contact, .cohorte {
+    font-weight: 600;
+    }
+    
+    .retail-enterprise, .retail-contact{
+    margin-bottom: 15px;
+    }
+    
+    /* .retail-enterprise ul li{
+    list-style: inside;
+    padding-left: 10px;
+    } */
+    
+    .telephone:hover{
+    color: blue;
+    text-decoration: underline;
+    transition: 0.5s ease;
+    }
+    
+    .email:hover{
+    color: blue;
+    text-decoration: underline;
+    }
+    
+    .retail-cohorte {
+    margin-bottom: 15px;
+    }
+    
+    .date:hover {
+    text-decoration: underline;
+    }
+    
+    .retail-realisation{
+    margin: 15px 10px;
+    
+    }
+    
+    .retail-realisation span{
+    font-weight: 600;
+    color: #111727;
+    }
+    
+    .retail-realisation .lien{
+    margin: 10px 0;
+    color: blue;
+    text-decoration: underline;
+    }
+    
+    .lien:hover{
+    color: blue;
+    text-decoration: none;
+    }
