@@ -7,6 +7,7 @@ import Header from '@/component/Header'
 import Main from '@/component/Main'
 import Learner from '@/component/Learner'
 import DispalyLeaner from '@/component/AllLearner'
+import SignIn from '@/component/SingIn'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,9 +22,10 @@ export default function Home() {
       </Head>
       <div>
         <Header />
-        <Main />
-        <Learner />
+        {/* <Main /> */}
+        {/* <Learner /> */}
         {/* <DispalyLeaner /> */}
+        <SignIn/>
         <Footer />
       </div>
     </>
