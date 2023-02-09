@@ -1,7 +1,7 @@
 import React from 'react'
-// import Learners from '../data/learners'
 import Image from 'next/image'
 import profil from '../img/main.jpg'
+import Link from 'next/link'
 
 export default function DisplayLeaner() {
   return (
@@ -33,26 +33,16 @@ export default function DisplayLeaner() {
           </p>
         </div>
         <ul className="containerItem">
-          {/* {Learners.map((learner, index) => {
-            return <li key={index}> {learner.name} </li>
-          })} */}
           <li className="item hover">
-            <Image src={profil} alt="profil" className="profil" />
-            <div className="containerDetail">
-              <div className="itemdetail">nom</div>
-              <div className="itemdetail">option</div>
-              <div className="itemdetail">status</div>
-            </div>
-            <div className="detail">détail</div>
-          </li>
-          <li className="item hover">
-            <Image src={profil} alt="profil" className="profil" />
-            <div className="containerDetail">
-              <div className="itemdetail">nom</div>
-              <div className="itemdetail">option</div>
-              <div className="itemdetail">status</div>
-            </div>
-            <div className="detail">détail</div>
+            <Link href="retail">
+              <Image src={profil} alt="profil" className="profil" />
+              <div className="containerDetail">
+                <div className="itemdetail">nom</div>
+                <div className="itemdetail">option</div>
+                <div className="itemdetail">status</div>
+              </div>
+              <div className="detail">détail</div>
+            </Link>
           </li>
           <li className="item hover">
             <Image src={profil} alt="profil" className="profil" />

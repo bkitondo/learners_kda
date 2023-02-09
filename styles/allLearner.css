@@ -44,9 +44,14 @@
 .paragraph {
   width: 60%;
   padding-bottom: 30px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgb(17, 23, 39);
 }
 .itemdetail {
   font-size: 12px;
+  color: rgba(0, 0,0,0.5);
+
 }
 .containerDetail {
   padding: 10px 5px;
@@ -55,4 +60,8 @@
 }
 .detail {
   padding: 0 5px 10px;
+  font-size: 12px;
+  color: #111727;
+  font-weight: 700;
 }
+
