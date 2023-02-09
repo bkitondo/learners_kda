@@ -21,8 +21,8 @@ export default function Footer() {
       </div>
       <div>
         <div className="footerSection">Categories</div>
-        <div className="footerCategorie hover">Developpement Web et Mobile</div>
-        <div className="footerCategorie hover">Marketing Digital</div>
+        <div className="footerCategorie hover">DEVELOPPEUR WEB ET MOBILE</div>
+        <div className="footerCategorie hover">MARKETING DIGITAL</div>
       </div>
       <Link className="footerSection" href="#s'inscrire">
         S'inscrire
