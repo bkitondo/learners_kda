@@ -1,18 +1,17 @@
 .formContainer {
   text-align: center;
-  width: 600px;
+  width: 500px;
   margin: auto;
-  border: 1px solid #000;
+  border: 1px solid #b1a7a7;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   padding: 30px 60px 60px 60px;
   margin-top: 25vh;
-  margin-bottom: 20vh;
 }
 .formInput {
   margin-top: 18px;
-  border: 0.5px solid #000;
+  border: 0.5px solid #b1a7a7;
   padding: 5px 23px;
   border-radius: 6px;
   outline: none;
@@ -20,9 +19,9 @@
 }
 .formBtn {
   margin-top: 18px;
-  border: 0.5px solid #000;
+  border: 0.5px solid #b1a7a7;
   padding: 5px 23px;
-  width: 200px;
+  width: 180px;
   border-radius: 6px;
   outline: none;
   font-size: 16px;
@@ -35,7 +34,37 @@
   background: #000;
   color: #fff;
 }
+.cancel{
+  background: #F2F0EE;
+}
 .display {
   display: flex;
   justify-content: space-between;
+}
+.logo{
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+}
+.containerGoogle{
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  border: 1px solid #b1a7a7;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20vh;
+  background: #F2F0EE;
+
+}
+.textGoogle{
+color: red; ;
+margin: auto;
+}
+.containerGoogle:hover
+{
+  background-color:#b1a7a7 ;
+  cursor: pointer;
 }
