@@ -54,3 +54,64 @@
     object-fit: cover;
     height: 300px;
 }
+
+
+.contact-about{
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F0EE;
+    border-top: 1px solid rgba(17, 23, 39, 0.1);
+    padding: 30px 0 0 0;
+}
+
+.contact-about form{
+    display: flex;
+    border: red;
+    margin: 20px auto 50px;
+}
+
+.contact-about input{
+    border: 1px solid rgba(17, 23, 39, 0.34);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+
+.contact-about button{
+    background-color: #111727;
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+    padding: 3px 10px;
+    transition: 1s ease;
+}
+
+.contact-about button:hover{
+    background-color: rgba(17, 23, 39, 0.78);
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+    padding: 3px 10px;
+}
+
+.call-about{
+    display: flex;
+    justify-content: center;
+}
+
+.callphone{
+    font-size: 30px;
+    margin: 0 auto 20px;
+}
+
+.call-ablot-phone{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.telephones {
+    opacity: 0.57;
+    padding: 20px 0;
+}
