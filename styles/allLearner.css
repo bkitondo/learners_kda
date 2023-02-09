@@ -25,7 +25,7 @@
   flex-wrap: wrap;
 }
 .sectionLearner {
-  padding: 0px 70px;
+  padding: 30px 70px;
 }
 .item {
   width: 210px;
@@ -37,12 +37,22 @@
   list-style: none;
 }
 .title {
-  color: #000;
-  font-size: 24px;
-  font-weight: 'bold';
-  padding: 50px 0px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 0;
 }
 .paragraph {
   width: 60%;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
+}
+.itemdetail {
+  font-size: 12px;
+}
+.containerDetail {
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+}
+.detail {
+  padding: 0 5px 10px;
 }
