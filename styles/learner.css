@@ -1,3 +1,6 @@
+.container{
+    position: relative;
+}
 .msg-alert{
     margin-top: 35px;
     margin-bottom: 35px;
@@ -19,6 +22,18 @@
 
 .publicity{
     width: 20%;
+    background-color: #F2F0EE;
+    height: 450px;
+    border-radius: 6px;
+    padding: 10px;
+    position: sticky;
+    top: 62px;
+    margin:0 0 5px 0;
+    font-size: 15px;
+    box-shadow: 0px 0px 7px rgba(17, 23, 39, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .learnerAleatoir{
