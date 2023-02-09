@@ -8,6 +8,7 @@ import '../styles/allLearner.css'
 import '../styles/retail.css'
 import '../styles/about.css'
 import '../styles/fontAbout.css'
+import '../styles/signin.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} /> 
