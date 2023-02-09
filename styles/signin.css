@@ -2,7 +2,7 @@
   text-align: center;
   width: 500px;
   margin: auto;
-  border: 1px solid #b1a7a7;
+  border: 1px solid rgba(177, 167, 167, 0.4);
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -31,40 +31,50 @@
   font-size: 30px;
 }
 .submit {
-  background: #000;
+  background: #111727;
   color: #fff;
+  transition: 0.7s ease;
 }
-.cancel{
-  background: #F2F0EE;
+.submit:hover{
+  background: rgba(17, 23, 39,0.8); 
+}
+.cancel {
+  background: #f2f0ee;
+  transition: 0.7s ease;
+}
+.cancel:hover{
+  background: rgba(242, 240, 238,0.1);
 }
 .display {
   display: flex;
   justify-content: space-between;
 }
-.logo{
+.logo {
   width: 50px;
   height: 50px;
   border-radius: 6px;
 }
-.containerGoogle{
+.containerGoogle {
   text-align: center;
   width: 500px;
   margin: auto;
-  border: 1px solid #b1a7a7;
+  border: 1px solid rgba(177, 167, 167, 0.4);
   border-radius: 6px;
   display: flex;
   flex-direction: row;
   margin-top: 20px;
   margin-bottom: 20vh;
-  background: #F2F0EE;
-
+  background: #f2f0ee;
+  transition: 0.7s ease;
 }
-.textGoogle{
-color: red; ;
-margin: auto;
+.textGoogle {
+  color: rgba(66, 133, 244, 255);
+  margin: auto;
 }
-.containerGoogle:hover
-{
-  background-color:#b1a7a7 ;
+/* .textGoogle:hover {
+  color: #fff;
+} */
+.containerGoogle:hover {
+  background-color: rgba(177, 167, 167, 0.45);
   cursor: pointer;
 }
