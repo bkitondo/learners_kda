@@ -6,7 +6,7 @@ import Link from "next/link";
 function Learners() {
   return (
     <div className="container">
-      <div className="msg-alert">
+      <div className="msg-alert" data-aos="fade-right" data-aos-duration="2000">
         <h2>Digital marketing specialists and web developers in Africa</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam

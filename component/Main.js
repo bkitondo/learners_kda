@@ -3,7 +3,7 @@ import React from "react";
 function Main() {
   const inscrire = "S'inscrire";
   return (
-    <div className="container-main">
+    <div className="container-main" data-aos="fade-up">
       <div className="alert-msg" data-aos="fade-down" data-aos-delay="900">
         <h2>Voulez vous rendre votre sevice numerique ?</h2>
         <p>
