@@ -15,6 +15,9 @@ import Router from "next/router";
 import Loader from "../component/Loader";
 import nProgress from "nprogress";
 import Head from "next/head";
+import Header from "@/component/Header";
+import Footer from "@/component/Footer";
+import Main from "@/component/Main";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
@@ -40,7 +43,17 @@ export default function App({ Component, pageProps }: AppProps) {
           referrerPolicy="no-referrer"
         />
       </Head>
-      {loading ? <Loader /> : <Component {...pageProps} />}
+      {loading ? (
+        <>
+        <Header />
+        <Main />
+          <Loader />
+          
+        <Footer />
+        </>
+      ) : (
+        <Component {...pageProps} />
+      )}
     </>
   );
 }
