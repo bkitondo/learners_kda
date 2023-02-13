@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function DisplayLeaner() {
   return (
     <main>
-      <div className="container-main">
+      <div className="container-main" data-aos="zoom-in">
         <div className="alert-msg" data-aos="fade-down" data-aos-delay="900">
           <h2>Voulez vous rendre votre sevice numerique ?</h2>
           <p>
@@ -25,8 +25,8 @@ export default function DisplayLeaner() {
       </div>
       <section className="sectionLearner">
         <div>
-          <h1 className="title">Developpeurs Web et Mobile</h1>
-          <p className="paragraph">
+          <h1 className="title" data-aos="fade-down" data-aos-delay="700">Developpeurs Web et Mobile</h1>
+          <p className="paragraph" data-aos="fade-down" data-aos-delay="1000">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel obcaecati nihil
             aspernatur culpa sed eius ullam eligendi, excepturi deleniti consequatur illo
             dolorem dicta, enim, similique aut optio? Hic, tempora temporibus

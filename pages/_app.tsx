@@ -49,7 +49,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <Main />
           <Loader />
           
+        <div style={{opacity:"0"}}>
         <Footer />
+        </div>
         </>
       ) : (
         <Component {...pageProps} />

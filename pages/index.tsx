@@ -5,7 +5,8 @@ import Footer from "@/component/Footer";
 import Header from "@/component/Header";
 import Main from "@/component/Main";
 import Learner from "@/component/Learner";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
