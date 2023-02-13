@@ -14,3 +14,13 @@ function ContainerRetail() {
 }
 
 export default ContainerRetail
+
+export async function getServerSideProps() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
+
+  return {
+    props: {},
+  };
+}
