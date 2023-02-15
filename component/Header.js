@@ -20,7 +20,7 @@ function Header() {
         <Link href="/signin" className="link">
           S inscrire
         </Link>
-        <Link href="#connexion" className="important link">
+        <Link href="/login" className="important link">
           Connexion
         </Link>
       </nav>
