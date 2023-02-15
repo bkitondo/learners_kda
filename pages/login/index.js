@@ -1,19 +1,17 @@
 import React from 'react'
 import Header from '../../component/Header'
 import Footer from '../../component/Footer'
-import DisplayLeaner from '../../component/AllLearner'
+import Login from '../../component/Login'
 
-function Categories() {
+export default function LogIn() {
   return (
     <>
       <Header />
-      <DisplayLeaner />
+      <Login />
       <Footer />
     </>
   )
 }
-
-export default Categories
 
 export async function getServerSideProps() {
   await new Promise(resolve => {
