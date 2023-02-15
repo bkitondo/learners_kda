@@ -9,7 +9,7 @@ function About() {
     <div className="container-about">
      <FontAbout />
       <div className="about-us">
-        <div className="content-about">
+        <div className="content-about" data-aos="zoom-in">
           <h2>A propos de nous!</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
@@ -24,7 +24,7 @@ function About() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
-        <div className="img-about">
+        <div className="img-about" data-aos="zoom-in">
           
         </div>
       </div>

@@ -3,8 +3,8 @@ import React from "react";
 function Main() {
   const inscrire = "S'inscrire";
   return (
-    <div className="container-main">
-      <div className="alert-msg" data-aos="fade-down" data-aos-delay="900">
+    <div className="container-main" data-aos="fade-up">
+      <div className="alert-msg" data-aos="fade-down" data-aos-delay="1000">
         <h2>Voulez vous rendre votre sevice numerique ?</h2>
         <p>
           Contacter un developpeur(se) web ou un marketeur(se) digital qui vous

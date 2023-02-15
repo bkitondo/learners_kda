@@ -14,3 +14,13 @@ function BlogAbout() {
 }
 
 export default BlogAbout
+
+export async function getServerSideProps() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
+
+  return {
+    props: {},
+  };
+}
