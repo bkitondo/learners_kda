@@ -1,10 +1,14 @@
 import learnerModel from '../models/learnerModel'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken"
 
+type Data = {
+  message: String
+  data: any
+}
 
-
-export async function getAllLearner(request, response) {
+export async function getAllLearner(request: NextApiRequest, response: NextApiResponse) {
   await learnerModel
     .find()
     .then(learner => {
@@ -20,8 +24,8 @@ export async function getAllLearner(request, response) {
 }
 
 export async function createOrFindLearner(
-  request,
-  response,
+  request: NextApiRequest,
+  response: NextApiResponse,
 ) {
   const learner = await learnerModel.findOne({ email: request.body.email })
   try {
@@ -73,7 +77,7 @@ export async function createOrFindLearner(
   }
 }
 
-export async function DeleteLearner(request, response) {
+export async function DeleteLearner(request: NextApiRequest, response: NextApiResponse) {
   const id = request.query.id
   try{
       learnerModel.findByIdAndRemove(id)
@@ -94,7 +98,7 @@ export async function DeleteLearner(request, response) {
   }
 }
 
-export async function UpdateLearner(request, response<Data>) {
+export async function UpdateLearner(request: NextApiRequest, response: NextApiResponse<Data>) {
     const id = request.query.id
     const { name, lastName, image, email, password, 
             contact, option, description, promotion, 
@@ -150,7 +154,7 @@ export async function UpdateLearner(request, response<Data>) {
     }
 }
 
-export async function FoundOneLearner(request, response<Data>){
+export async function FoundOneLearner(request: NextApiRequest, response: NextApiResponse<Data>){
     const id = request.query.id
 
     try{
@@ -169,7 +173,7 @@ export async function FoundOneLearner(request, response<Data>){
     }
 }
 
-export async function LoginLearner(request, response){
+export async function LoginLearner(request: NextApiRequest, response: NextApiResponse){
     const user = await learnerModel.findOne({ email: request.body.email})
 
     try{
