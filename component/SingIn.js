@@ -4,8 +4,8 @@ import google from '../img/google.png'
 
 export default function SingIn() {
   return (
-    <main>
-      <div className="formContainer" data-aos="zoom-in-down" data-aos-duration="2000">
+    <main data-aos="zoom-in" data-aos-duration="2000">
+      <div className="formContainer">
         <div className="fromtitle">Inscrivez-vous !</div>
         <div className="display">
           <input className="formBtn" type="text" placeholder="Nom" />
@@ -18,7 +18,7 @@ export default function SingIn() {
           <button className="formBtn  submit">Soumettre</button>
         </div>
       </div>
-      <div className="containerGoogle" data-aos="zoom-in-down" data-aos-duration="3000">
+      <div className="containerGoogle">
         <Image src={google} alt="logo de google" className="logo" />
         <div className="textGoogle">S'inscrire avec son compte google</div>
       </div>
