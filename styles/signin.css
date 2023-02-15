@@ -8,6 +8,7 @@
   flex-direction: column;
   padding: 30px 60px 60px 60px;
   margin-top: 25vh;
+  margin-bottom: 25vh;
 }
 .formInput {
   margin-top: 18px;
@@ -35,15 +36,15 @@
   color: #fff;
   transition: 0.7s ease;
 }
-.submit:hover{
-  background: rgba(17, 23, 39,0.8); 
+.submit:hover {
+  background: rgba(17, 23, 39, 0.8);
 }
 .cancel {
   background: #f2f0ee;
   transition: 0.7s ease;
 }
-.cancel:hover{
-  background: rgba(242, 240, 238,0.1);
+.cancel:hover {
+  background: rgba(242, 240, 238, 0.1);
 }
 .display {
   display: flex;
@@ -71,10 +72,34 @@
   color: rgba(66, 133, 244, 255);
   margin: auto;
 }
-/* .textGoogle:hover {
-  color: #fff;
-} */
 .containerGoogle:hover {
   background-color: rgba(177, 167, 167, 0.45);
   cursor: pointer;
 }
+.picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+.containerPicture {
+  text-align: center;
+  position: relative;
+  margin: auto;
+}
+.file{
+  position: absolute;
+  width: 30px;
+  top: 90px;
+  left: 80px;
+  opacity: 0;
+  cursor: pointer;
+}
+.icon{
+  font-size: 30px;
+  color: #111727;
+  position: relative;
+  top: -10px;
+  left: 80px;
+  cursor: pointer;
+}
+
