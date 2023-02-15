@@ -35,10 +35,7 @@ export async function createOrFindLearner(
       const {
         name,
         lastName,
-<<<<<<< HEAD
         image,
-=======
->>>>>>> ec11233 (fix:fill in the fields required)
         email,
         option,
         contact,
@@ -48,20 +45,13 @@ export async function createOrFindLearner(
         password,
       } = request.body
 
-<<<<<<< HEAD
       if (name && lastName && image && email && option && description && promotion && password) {
-=======
-      if (name && lastName && email && option && description && promotion && password) {
->>>>>>> ec11233 (fix:fill in the fields required)
         const hash = bcrypt.hashSync(password, 10)
         learnerModel
           .create({
             name,
             lastName,
-<<<<<<< HEAD
             image,
-=======
->>>>>>> ec11233 (fix:fill in the fields required)
             email,
             option,
             contact,
@@ -79,11 +69,7 @@ export async function createOrFindLearner(
             throw err
           })
       } else {
-<<<<<<< HEAD
         response.status(500).json({ message: 'please, fill in the empty fields' })
-=======
-        response.status(500).json({ message: 'fill in the empty fields' })
->>>>>>> ec11233 (fix:fill in the fields required)
       }
     }
   } catch (error) {

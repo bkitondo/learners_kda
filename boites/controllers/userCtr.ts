@@ -132,7 +132,7 @@ export async function FoundOneUser(request: NextApiRequest, response: NextApiRes
               response.status(400).json({ message: "User Not Found", data: null })
             }
             else{
-              response.status(400).json({ message: "User Found suucesfully", data: user })
+              response.status(200).json({ message: "User Found sucesfully", data: user })
             }
         })
         .catch(err => {

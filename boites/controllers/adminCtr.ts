@@ -126,7 +126,7 @@ export async function FoundOnAdmin(request: NextApiRequest, response: NextApiRes
               response.status(400).json({ message: "Admin Not Found", data: null })
           }
           else{
-            response.status(400).json({ message: "Admin Found succesfully", data: admin })
+            response.status(200).json({ message: "Admin Found succesfully", data: admin })
           }
       })
     }

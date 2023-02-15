@@ -5,13 +5,13 @@ import Footer from "@/component/Footer";
 import Header from "@/component/Header";
 import Main from "@/component/Main";
 import Learner from "@/component/Learner";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  
   return (
     <>
       <Head>
@@ -36,7 +36,17 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
+//   await new Promise((resolve) => {
+//     setTimeout(resolve, 1000);
+//   });
+
+//   return {
+//     props: {},
+//   };
+// }
+
+export async function getStaticProps() {
   await new Promise((resolve) => {
     setTimeout(resolve, 1000);
   });
