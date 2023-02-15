@@ -1,13 +1,14 @@
 import * as React from 'react'
 import Image from 'next/image'
-import google from '../img/google.png'
+import defaultPicture from '../img/defaultProfil.png'
 import { AiOutlinePlus } from 'react-icons/ai'
+import axios from 'axios'
 
 export default function AddLearner() {
   const [learner, setLearner] = React.useState({
       name: '',
       lastName: '',
-      image: '',
+      image: { defaultPicture },
       number: '',
       status: '',
       promotion: '',
@@ -15,7 +16,25 @@ export default function AddLearner() {
       password: '',
       option: '',
     }),
-    [picture, setPicture] = React.useState(google)
+    [picture, setPicture] = React.useState(defaultPicture)
+
+  async function fetchLerner() {
+    if (learner) {
+      const newLearner = await axios.post(
+        'http://localhost:3000/api/learner/learnerApi',
+        { learner },
+      )
+      try {
+        if (newLearner) {
+          console.log('succes')
+        }
+      } catch (err) {
+        throw err
+      }
+    } else {
+      alert(`champs vides`)
+    }
+  }
 
   return (
     <main data-aos="zoom-in" data-aos-duration="2000">
@@ -116,7 +135,7 @@ export default function AddLearner() {
         <textarea className="formInput" placeholder="Déscription" />
         <div className="display">
           <button className="formBtn cancel"> Annuler </button>
-          <button className="formBtn  submit" onClick={() => alert(`${learner.option}`)}>
+          <button className="formBtn  submit" onClick={fetchLerner}>
             Soumettre
           </button>
         </div>

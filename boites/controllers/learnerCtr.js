@@ -1,14 +1,10 @@
 import learnerModel from '../models/learnerModel'
-import type { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken"
 
-type Data = {
-  message: String
-  data: any
-}
 
-export async function getAllLearner(request: NextApiRequest, response: NextApiResponse) {
+
+export async function getAllLearner(request, response) {
   await learnerModel
     .find()
     .then(learner => {
@@ -24,8 +20,8 @@ export async function getAllLearner(request: NextApiRequest, response: NextApiRe
 }
 
 export async function createOrFindLearner(
-  request: NextApiRequest,
-  response: NextApiResponse,
+  request,
+  response,
 ) {
   const learner = await learnerModel.findOne({ email: request.body.email })
   try {
@@ -35,10 +31,7 @@ export async function createOrFindLearner(
       const {
         name,
         lastName,
-<<<<<<< HEAD
         image,
-=======
->>>>>>> ec11233 (fix:fill in the fields required)
         email,
         option,
         contact,
@@ -48,20 +41,13 @@ export async function createOrFindLearner(
         password,
       } = request.body
 
-<<<<<<< HEAD
       if (name && lastName && image && email && option && description && promotion && password) {
-=======
-      if (name && lastName && email && option && description && promotion && password) {
->>>>>>> ec11233 (fix:fill in the fields required)
         const hash = bcrypt.hashSync(password, 10)
         learnerModel
           .create({
             name,
             lastName,
-<<<<<<< HEAD
             image,
-=======
->>>>>>> ec11233 (fix:fill in the fields required)
             email,
             option,
             contact,
@@ -79,11 +65,7 @@ export async function createOrFindLearner(
             throw err
           })
       } else {
-<<<<<<< HEAD
         response.status(500).json({ message: 'please, fill in the empty fields' })
-=======
-        response.status(500).json({ message: 'fill in the empty fields' })
->>>>>>> ec11233 (fix:fill in the fields required)
       }
     }
   } catch (error) {
@@ -91,7 +73,7 @@ export async function createOrFindLearner(
   }
 }
 
-export async function DeleteLearner(request: NextApiRequest, response: NextApiResponse) {
+export async function DeleteLearner(request, response) {
   const id = request.query.id
   try{
       learnerModel.findByIdAndRemove(id)
@@ -112,7 +94,7 @@ export async function DeleteLearner(request: NextApiRequest, response: NextApiRe
   }
 }
 
-export async function UpdateLearner(request: NextApiRequest, response: NextApiResponse<Data>) {
+export async function UpdateLearner(request, response<Data>) {
     const id = request.query.id
     const { name, lastName, image, email, password, 
             contact, option, description, promotion, 
@@ -168,7 +150,7 @@ export async function UpdateLearner(request: NextApiRequest, response: NextApiRe
     }
 }
 
-export async function FoundOneLearner(request: NextApiRequest, response: NextApiResponse<Data>){
+export async function FoundOneLearner(request, response<Data>){
     const id = request.query.id
 
     try{
@@ -187,7 +169,7 @@ export async function FoundOneLearner(request: NextApiRequest, response: NextApi
     }
 }
 
-export async function LoginLearner(request: NextApiRequest, response: NextApiResponse){
+export async function LoginLearner(request, response){
     const user = await learnerModel.findOne({ email: request.body.email})
 
     try{
