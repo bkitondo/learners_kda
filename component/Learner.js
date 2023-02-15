@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import ImageMain from "../img/main.jpg";
 import Link from "next/link";
+import ListItemLearner from "../component/ListItemLearner";
 
-function Learners() {
+function Learners({ learners }) {
+  console.log("allLearner => ", learners);
   return (
     <div className="container">
       <div className="msg-alert" data-aos="fade-right" data-aos-duration="2000">
@@ -17,22 +19,20 @@ function Learners() {
       <div className="learners-pub">
         <div className="learnerAleatoir">
           <div className="container-learner">
-            <div className="blog-learner">
-              <Image
-                src={ImageMain}
-                alt="image of main page"
-                className="leaner-img"
-              />
-              <div className="title-learner">
-                Specialiiste en Markint Digital
-              </div>
-              <div className="learner-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                dignissimos eaque totam. Quidem, perferendi. perferendis.
-              </div>
-              <div className="retail">retail</div>
-            </div>
+            {learners.map((list) => {
+              return (
+                <ListItemLearner
+                  key={list.id}
+                  id={list._id}
+                  option={list.option}
+                  desc={list.description}
+                  imagesss={list.image}
+                />
+              );
+            })}
           </div>
+        </div>
+        {/* <div className="learnerAleatoir">
           <div className="container-learner">
             <Link href="/retail" className="blog-learner">
               <Image
@@ -50,58 +50,7 @@ function Learners() {
               <div className="retail">retail</div>
             </Link>
           </div>
-          <div className="container-learner">
-            <div className="blog-learner">
-              <Image
-                src={ImageMain}
-                alt="image of main page"
-                className="leaner-img"
-              />
-              <div className="title-learner">
-                Specialiiste en Markint Digital
-              </div>
-              <div className="learner-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                dignissimos eaque totam. Quidem, perferendi. perferendis.
-              </div>
-              <div className="retail">retail</div>
-            </div>
-          </div>
-          <div className="container-learner">
-            <div className="blog-learner">
-              <Image
-                src={ImageMain}
-                alt="image of main page"
-                className="leaner-img"
-              />
-              <div className="title-learner">
-                Specialiiste en Markint Digital
-              </div>
-              <div className="learner-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                dignissimos eaque totam. Quidem, perferendi. perferendis.
-              </div>
-              <div className="retail">retail</div>
-            </div>
-          </div>
-          <div className="container-learner">
-            <div className="blog-learner">
-              <Image
-                src={ImageMain}
-                alt="image of main page"
-                className="leaner-img"
-              />
-              <div className="title-learner">
-                Specialiiste en Markint Digital
-              </div>
-              <div className="learner-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                dignissimos eaque totam. Quidem, perferendi. perferendis.
-              </div>
-              <div className="retail">retail</div>
-            </div>
-          </div>
-        </div>
+        </div> */}
         <div className="publicity">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
           dignissimos eaque totam. Quidem, perferendi. perferendis.
