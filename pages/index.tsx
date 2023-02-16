@@ -1,17 +1,23 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import Head from 'next/head'
-import { Inter } from '@next/font/google'
-import Footer from '@/component/Footer'
-import Header from '@/component/Header'
-import Main from '@/component/Main'
-import Learner from '@/component/Learner'
-import Addlearner from '@/component/AddLearner'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import Head from "next/head";
+import { Inter } from "@next/font/google";
+import Footer from "@/component/Footer";
+import Header from "@/component/Header";
+import Main from "@/component/Main";
+import Learner from "@/component/Learner";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import axios from "axios";
+import getLearners from "../boites/frontend/util";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+interface learnerList {
+  learners: Array<string>;
+  learnerData: Array<string>;
+}
+
+export default function Home({ learners }: { learners: string[] }) {
   return (
     <>
       <Head>
@@ -25,21 +31,22 @@ export default function Home() {
       </Head>
       <div>
         <Header />
-        {/* <Main /> */}
-        {/* <Learner /> */}
-        <Addlearner />
+        <Main />
+        <Learner learners={learners} />
         <Footer />
       </div>
     </>
   )
 }
 
-export async function getServerSideProps() {
-  await new Promise(resolve => {
-    setTimeout(resolve, 1000)
-  })
+export async function getStaticProps() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
+
+  const learners = await getLearners();
 
   return {
-    props: {},
-  }
+    props: { learners },
+  };
 }

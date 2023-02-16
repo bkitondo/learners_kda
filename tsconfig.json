@@ -20,5 +20,4 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "component/Footer.js", "component/Header.js", "boites/connexionDb/connexion.js", "boites/controllers/adminCtr.ts", "boites/controllers/learnerCtr.ts"],
-  "exclude": ["node_modules"]
 }
