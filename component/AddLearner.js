@@ -22,7 +22,22 @@ export default function AddLearner() {
     if (learner) {
       const newLearner = await axios.post(
         'http://localhost:3000/api/learner/learnerApi',
-        { learner },
+        {
+          name: learner.name,
+          lastName: learner.lastName,
+          image: learner.image,
+          number: learner.number,
+          status: learner.status,
+          promotion: learner.promotion,
+          email: learner.email,
+          password: learner.password,
+          option: learner.option,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
       )
       try {
         if (newLearner) {
