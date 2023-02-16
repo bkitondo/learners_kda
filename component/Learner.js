@@ -18,39 +18,18 @@ function Learners({ learners }) {
       </div>
       <div className="learners-pub">
         <div className="learnerAleatoir">
-          <div className="container-learner">
-            {learners.map((list) => {
-              return (
-                <ListItemLearner
-                  key={list.id}
-                  id={list._id}
-                  option={list.option}
-                  desc={list.description}
-                  imagesss={list.image}
-                />
-              );
-            })}
-          </div>
-        </div>
-        {/* <div className="learnerAleatoir">
-          <div className="container-learner">
-            <Link href="/retail" className="blog-learner">
-              <Image
-                src={ImageMain}
-                alt="image of main page"
-                className="leaner-img"
+          {learners.map((list) => {
+            return (
+              <ListItemLearner
+                key={list.id}
+                id={list._id}
+                option={list.option}
+                desc={list.description}
+                imagesss={list.image}
               />
-              <div className="title-learner">
-                Specialiiste en Markint Digital
-              </div>
-              <div className="learner-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                dignissimos eaque totam. Quidem, perferendi. perferendis.
-              </div>
-              <div className="retail">retail</div>
-            </Link>
-          </div>
-        </div> */}
+            );
+          })}
+        </div>
         <div className="publicity">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
           dignissimos eaque totam. Quidem, perferendi. perferendis.
