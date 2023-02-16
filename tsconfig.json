@@ -34,7 +34,7 @@
     "boites/connexionDb/connexion.js",
     "boites/controllers/adminCtr.ts",
     "boites/controllers/learnerCtr.ts"
-  ],
+, "pages/_app.jsx", "pages/index.js"  ],
   "exclude": [
     "node_modules"
   ]
