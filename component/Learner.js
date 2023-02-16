@@ -5,7 +5,11 @@ import Link from "next/link";
 import ListItemLearner from "../component/ListItemLearner";
 
 function Learners({ learners }) {
-  console.log("allLearner => ", learners);
+  
+  const handlerLearner = () => {
+      console.log("salut")
+  }
+
   return (
     <div className="container">
       <div className="msg-alert" data-aos="fade-right" data-aos-duration="2000">
@@ -16,7 +20,7 @@ function Learners({ learners }) {
           deserunt reprehenderit error ab! Eveniet a voluptatibus corrupti
         </p>
       </div>
-      <div className="learners-pub">
+      <div className="learners-pub" onClick={handlerLearner}>
         <div className="learnerAleatoir">
           {learners.map((list) => {
             return (
