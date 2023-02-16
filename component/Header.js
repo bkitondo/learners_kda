@@ -17,7 +17,7 @@ function Header() {
         <Link href="about" className="link">
           A propos
         </Link>
-        <Link href="adduser" className="link">
+        <Link href="/addLearner" className="link">
           Ajouter un apprenant
         </Link>
         <Link href="/signin" className="link">

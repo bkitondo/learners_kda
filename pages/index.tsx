@@ -1,39 +1,23 @@
 /* eslint-disable @next/next/no-sync-scripts */
-<<<<<<< HEAD
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import Footer from '@/component/Footer'
 import Header from '@/component/Header'
 import Main from '@/component/Main'
 import Learner from '@/component/Learner'
-import Addlearner from '@/component/AddLearner'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-=======
-import Head from "next/head";
-import { Inter } from "@next/font/google";
-import Footer from "@/component/Footer";
-import Header from "@/component/Header";
-import Main from "@/component/Main";
-import Learner from "@/component/Learner";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import axios from "axios";
-import getLearners from "../boites/frontend/util";
->>>>>>> 8ad3a94
+import axios from 'axios'
+import getLearners from '../boites/frontend/util'
 
 const inter = Inter({ subsets: ['latin'] })
 
-<<<<<<< HEAD
-export default function Home() {
-=======
 interface learnerList {
-  learners: Array<string>;
-  learnerData: Array<string>;
+  learners: Array<string>
+  learnerData: Array<string>
 }
 
 export default function Home({ learners }: { learners: string[] }) {
->>>>>>> 8ad3a94
   return (
     <>
       <Head>
@@ -47,40 +31,22 @@ export default function Home({ learners }: { learners: string[] }) {
       </Head>
       <div>
         <Header />
-<<<<<<< HEAD
-        {/* <Main /> */}
-        {/* <Learner /> */}
-        <Addlearner />
-=======
         <Main />
         <Learner learners={learners} />
->>>>>>> 8ad3a94
         <Footer />
       </div>
     </>
   )
 }
 
-<<<<<<< HEAD
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await new Promise(resolve => {
     setTimeout(resolve, 1000)
   })
-=======
-export async function getStaticProps() {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
->>>>>>> 8ad3a94
 
-  const learners = await getLearners();
+  const learners = await getLearners()
 
   return {
-<<<<<<< HEAD
-    props: {},
-  }
-=======
     props: { learners },
-  };
->>>>>>> 8ad3a94
+  }
 }

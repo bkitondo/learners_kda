@@ -27,6 +27,11 @@ function Learners({ learners }) {
                   option={list.option}
                   desc={list.description}
                   imagesss={list.image}
+                  promotion={list.promotion}
+                  contact ={list.contact}
+                  email={list.email}
+                  status={list.status}
+                  
                 />
               );
             })}
