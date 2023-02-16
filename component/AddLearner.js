@@ -170,5 +170,5 @@ export default function AddLearner() {
         </div>
       </div>
     </main>
-  )
+  );
 }
