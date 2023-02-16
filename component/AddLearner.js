@@ -1,53 +1,63 @@
-import * as React from "react";
-import Image from "next/image";
-import defaultPicture from "../img/defaultProfil.png";
-import { AiOutlinePlus } from "react-icons/ai";
-import axios from "axios";
+import * as React from 'react'
+import Image from 'next/image'
+import defaultPicture from '../img/defaultProfil.png'
+import { AiOutlinePlus } from 'react-icons/ai'
+import axios from 'axios'
 
 export default function AddLearner() {
-  const [learner, setLearner] = React.useState({
-      name: "",
-      lastName: "",
-      image: { defaultPicture },
-      number: "",
-      status: "",
-      promotion: "",
-      email: "",
-      password: "",
-      option: "",
-    }),
-    [picture, setPicture] = React.useState(defaultPicture);
+  const [name, setName] = React.useState(''),
+    [lastName, setLastName] = React.useState(''),
+    [image, setImage] = React.useState(
+      'https://res.cloudinary.com/davr0i2ga/image/upload/v1669824681/smtvpbcgudmaghtqoq6m.png',
+    ),
+    [email, setEmail] = React.useState(''),
+    [password, setPassword] = React.useState(''),
+    [contact, setContact] = React.useState(''),
+    [option, setOption] = React.useState(''),
+    [description, setDescription] = React.useState('salut'),
+    [status, setStatus] = React.useState(''),
+    [promotion, setPromotion] = React.useState(''),
+    [picture, setPicture] = React.useState(defaultPicture),
+    [loader, setLoader] = React.useState(false)
 
   async function fetchLerner() {
-    if (learner) {
-      const newLearner = await axios.post(
-        "http://localhost:3000/api/learner/learnerApi",
-        {
-          name: learner.name,
-          lastName: learner.lastName,
-          image: learner.image,
-          number: learner.number,
-          status: learner.status,
-          promotion: learner.promotion,
-          email: learner.email,
-          password: learner.password,
-          option: learner.option,
+    if (
+      name !== '' &&
+      lastName !== '' &&
+      email !== '' &&
+      password !== '' &&
+      option !== '' &&
+      description !== '' &&
+      promotion !== ''
+    ) {
+      setLoader(true)
+      const newLearner = await axios({
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        url: 'http://localhost:3000/api/learner/learnerApi',
+        data: {
+          name,
+          lastName,
+          image,
+          email,
+          password,
+          contact,
+          option,
+          description,
+          status,
+          promotion,
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      })
       try {
         if (newLearner) {
-          console.log("succes");
+          setLoader(false)
+          alert('succes')
         }
       } catch (err) {
-        throw err;
+        throw err
       }
     } else {
-      alert(`champs vides`);
+      alert(`remplissez les champs vides svp`)
     }
   }
 
@@ -66,9 +76,9 @@ export default function AddLearner() {
           <input
             type="file"
             accept="image/png, image/jpeg, image/jpg"
-            onChange={(value) => {
-              setLearner({ image: value.target.files[0] });
-              setPicture(URL.createObjectURL(value.target.files[0]));
+            onChange={value => {
+              setImage(value.target.files[0])
+              setPicture(URL.createObjectURL(value.target.files[0]))
             }}
             className="file"
             title=""
@@ -79,16 +89,16 @@ export default function AddLearner() {
             className="formBtn"
             type="text"
             placeholder="Nom"
-            onChange={(Nom) => {
-              setLearner({ name: Nom.target.value });
+            onChange={Nom => {
+              setName(Nom.target.value)
             }}
           />
           <input
             className="formBtn"
             type="text"
             placeholder="Prénom"
-            onChange={(Prénom) => {
-              setLearner({ lastName: Prénom.target.value });
+            onChange={Prénom => {
+              setLastName(Prénom.target.value)
             }}
           />
         </div>
@@ -97,36 +107,34 @@ export default function AddLearner() {
             className="formBtn"
             type="text"
             placeholder="Status"
-            onChange={(Status) => {
-              setLearner({ status: Status.target.value });
+            onChange={Status => {
+              setStatus(Status.target.value)
             }}
           />
           <input
             className="formBtn"
             type="text"
             placeholder="Contact"
-            onChange={(Contact) => {
-              setLearner({ number: Contact.target.value });
+            onChange={Contact => {
+              setContact(Contact.target.value)
             }}
           />
         </div>
         <div className="display">
           <select
             className="formBtn"
-            onChange={(Option) => {
-              setLearner({ option: Option.target.value });
-            }}
-          >
+            onChange={Option => {
+              setOption(Option.target.value)
+            }}>
             <option value="">Option</option>
             <option value="dev">Developpeur web et mobile</option>
             <option value="smd">Specialiste en Marketing Digital</option>
           </select>
           <select
             className="formBtn"
-            onChange={(Promotion) => {
-              setLearner({ promotion: Promotion.target.value });
-            }}
-          >
+            onChange={Promotion => {
+              setPromotion(Promotion.target.value)
+            }}>
             <option value="">Promotion</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
@@ -137,23 +145,27 @@ export default function AddLearner() {
           className="formInput"
           type="email"
           placeholder="Email"
-          onChange={(Email) => {
-            setLearner({ email: Email.target.value });
+          onChange={Email => {
+            setEmail(Email.target.value)
           }}
         />
         <input
           className="formInput"
           type="password"
           placeholder="Mot de passe"
-          onChange={(pin) => {
-            setLearner({ password: pin.target.value });
+          onChange={pin => {
+            setPassword(pin.target.value)
           }}
         />
-        <textarea className="formInput" placeholder="Déscription" />
+        <textarea
+          className="formInput"
+          placeholder="Déscription"
+          onChange={Déscription => setDescription(Déscription.target.value)}
+        />
         <div className="display">
           <button className="formBtn cancel"> Annuler </button>
           <button className="formBtn  submit" onClick={fetchLerner}>
-            Soumettre
+            {!loader ? `Soumettre` : `Envoie en cours ...`}
           </button>
         </div>
       </div>

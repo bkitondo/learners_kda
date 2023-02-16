@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import Head from "next/head";
-import { Inter } from "@next/font/google";
-import Footer from "@/component/Footer";
-import Header from "@/component/Header";
-import Main from "@/component/Main";
-import Learner from "@/component/Learner";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import axios from "axios";
-import getLearners from "../boites/frontend/util";
+import Head from 'next/head'
+import { Inter } from '@next/font/google'
+import Footer from '@/component/Footer'
+import Header from '@/component/Header'
+import Main from '@/component/Main'
+import Learner from '@/component/Learner'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import axios from 'axios'
+import getLearners from '../boites/frontend/util'
 
 const inter = Inter({ subsets: ['latin'] })
 
 interface learnerList {
-  learners: Array<string>;
-  learnerData: Array<string>;
+  learners: Array<string>
+  learnerData: Array<string>
 }
 
 export default function Home({ learners }: { learners: string[] }) {
@@ -40,13 +40,13 @@ export default function Home({ learners }: { learners: string[] }) {
 }
 
 export async function getStaticProps() {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
+  await new Promise(resolve => {
+    setTimeout(resolve, 1000)
+  })
 
-  const learners = await getLearners();
+  const learners = await getLearners()
 
   return {
     props: { learners },
-  };
+  }
 }
