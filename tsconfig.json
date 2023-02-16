@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "component/Footer.js", "component/Header.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "component/Footer.js", "component/Header.js", "boites/controllers/learnerCtr.ts", "pages/api/learner/learnerApi.ts", "pages/api/learner/auth.ts"],
   "exclude": ["node_modules"]
 }
