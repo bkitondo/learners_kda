@@ -1,35 +1,36 @@
-import "@/styles/globals.css";
-import "../styles/header.css";
-import "../styles/main.css";
-import "../styles/learner.css";
-import "../styles/footer.css";
-import "../styles/allLearner.css";
-import "../styles/retail.css";
-import "../styles/about.css";
-import "../styles/fontAbout.css";
-import "../styles/signin.css";
-import "../styles/loader.css";
-import Router from "next/router";
-import Loader from "../component/Loader";
-import nProgress from "nprogress";
-import Head from "next/head";
-import Header from "@/component/Header";
-import Footer from "@/component/Footer";
-import Main from "@/component/Main";
-import { useState } from "react";
+import '@/styles/globals.css'
+import '../styles/header.css'
+import '../styles/main.css'
+import '../styles/learner.css'
+import '../styles/footer.css'
+import '../styles/allLearner.css'
+import '../styles/retail.css'
+import '../styles/about.css'
+import '../styles/fontAbout.css'
+import '../styles/signin.css'
+import '../styles/loader.css'
+import Router from 'next/router'
+import Loader from '../component/Loader'
+import nProgress from 'nprogress'
+import Head from 'next/head'
+import Header from '@/component/Header'
+import Footer from '@/component/Footer'
+import Main from '@/component/Main'
+import { useState } from 'react'
 
 export default function App({ Component, pageProps }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false),
+    [oneLearner, setOneLearner] = useState({})
 
-  Router.events.on("routeChangeStart", (url) => {
-    setLoading(true);
-    nProgress.start();
-  });
+  Router.events.on('routeChangeStart', url => {
+    setLoading(true)
+    nProgress.start()
+  })
 
-  Router.events.on("routeChangeComplete", (url) => {
-    setLoading(false);
-    nProgress.done();
-  });
+  Router.events.on('routeChangeComplete', url => {
+    setLoading(false)
+    nProgress.done()
+  })
 
   return (
     <>
@@ -48,13 +49,13 @@ export default function App({ Component, pageProps }) {
           <Main />
           <Loader />
 
-          <div style={{ opacity: "0" }}>
+          <div style={{ opacity: '0' }}>
             <Footer />
           </div>
         </>
       ) : (
-          <Component {...pageProps} />
+        <Component oneLearner={oneLearner} setOneLearner={setOneLearner} {...pageProps} />
       )}
     </>
-  );
+  )
 }

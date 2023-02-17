@@ -3,12 +3,12 @@ import Footer from '../../component/Footer'
 import Header from '../../component/Header'
 import Retail from '../../component/Retail'
 
-function ContainerRetail() {
+function ContainerRetail({ oneLearner }) {
   return (
     <>
-        <Header />
-        <Retail />
-        <Footer />
+      <Header />
+      <Retail oneLearner={oneLearner} />
+      <Footer />
     </>
   )
 }
@@ -16,11 +16,11 @@ function ContainerRetail() {
 export default ContainerRetail
 
 export async function getServerSideProps() {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
+  await new Promise(resolve => {
+    setTimeout(resolve, 1000)
+  })
 
   return {
     props: {},
-  };
+  }
 }
