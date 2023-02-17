@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import Image from "next/image";
-import ImageMain from "../img/main.jpg";
-import Link from "next/link";
 import ListItemLearner from "../component/ListItemLearner";
 
 function Learners({ learners }) {
-  
   const handlerLearner = () => {
-      console.log("salut")
-  }
+    console.log("salut");
+  };
 
   return (
     <div className="container">
@@ -21,19 +17,7 @@ function Learners({ learners }) {
         </p>
       </div>
       <div className="learners-pub" onClick={handlerLearner}>
-        <div className="learnerAleatoir">
-          {learners.map((list) => {
-            return (
-              <ListItemLearner
-                key={list.id}
-                id={list._id}
-                option={list.option}
-                desc={list.description}
-                imagesss={list.image}
-              />
-            );
-          })}
-        </div>
+        <ListItemLearner />
         <div className="publicity">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
           dignissimos eaque totam. Quidem, perferendi. perferendis.

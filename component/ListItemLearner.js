@@ -1,24 +1,34 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import ImageMain from "../img/main.jpg";
+import AppContext from "../Context/AppContext";
 
-function ListItemLearner({ imagesss, id, desc, option }) {
+function ListItemLearner() {
+  const context = useContext(AppContext);
+
+  const [learners, setLearners] = useState(context.allLearners);
   return (
-    <div className="container-learner">
-      <Link href="/retail" className="blog-learner">
-        <Image
-          src={imagesss}
-          width={210}
-          height={240}
-          alt="image of main page"
-          className="leaner-img"
-          component="img"
-        />
-        <div className="title-learner">{option}</div>
-        <div className="learner-description">{desc}</div>
-        <div className="retail">retail</div>
-      </Link>
+    <div className="learnerAleatoir">
+      {learners.map((list) => {
+        return (
+          <div className="container-learner"  key={list.id}>
+            <Link href="/retail" className="blog-learner">
+              <Image
+                src={list.image}
+                width={210}
+                height={240}
+                alt="image of main page"
+                className="leaner-img"
+                component="img"
+              />
+              <div className="title-learner">{list.option}</div>
+              <div className="learner-description">{list.description}</div>
+              <div className="retail">retail</div>
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 }

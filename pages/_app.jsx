@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 import "../styles/header.css";
 import "../styles/main.css";
 import "../styles/learner.css";
@@ -10,7 +9,6 @@ import "../styles/about.css";
 import "../styles/fontAbout.css";
 import "../styles/signin.css";
 import "../styles/loader.css";
-import { useState } from "react";
 import Router from "next/router";
 import Loader from "../component/Loader";
 import nProgress from "nprogress";
@@ -18,8 +16,9 @@ import Head from "next/head";
 import Header from "@/component/Header";
 import Footer from "@/component/Footer";
 import Main from "@/component/Main";
+import { useState } from "react";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
   Router.events.on("routeChangeStart", (url) => {
@@ -45,16 +44,16 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       {loading ? (
         <>
-        <Header />
-        <Main />
+          <Header />
+          <Main />
           <Loader />
-          
-        <div style={{opacity:"0"}}>
-        <Footer />
-        </div>
+
+          <div style={{ opacity: "0" }}>
+            <Footer />
+          </div>
         </>
       ) : (
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       )}
     </>
   );
