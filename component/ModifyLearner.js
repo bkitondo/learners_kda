@@ -17,9 +17,54 @@ export default function ModifyLearner({ oneLearner }) {
     [description, setDescription] = React.useState(oneLearner.description),
     [status, setStatus] = React.useState(oneLearner.status),
     [promotion, setPromotion] = React.useState(oneLearner.promotion),
-    [picture, setPicture] = React.useState(defaultPicture);
+    [picture, setPicture] = React.useState(defaultPicture),
+    [loader, setLoader] = React.useState(false),
+    [learner, setLearner] = React.useState(oneLearner);
+  const idLearner = oneLearner._id;
 
-  console.log("oneLearner => ", oneLearner);
+  const handlerModify = () => {
+    if (
+      name !== "" &&
+      lastName !== "" &&
+      email !== "" &&
+      password !== "" &&
+      option !== "" &&
+      description !== "" &&
+      promotion !== ""
+    ) {
+      setLoader(true);
+      console.log("oneLearner => ", learner);
+      console.log("Id => ", idLearner);
+
+      const updateLearner = axios({
+        method: "PUT",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        url: `http://localhost:3000/api/learner/${idLearner}`,
+        data: {
+          name,
+          lastName,
+          image,
+          email,
+          password,
+          contact,
+          option,
+          description,
+          status,
+          promotion,
+        },
+      });
+      try {
+        if (updateLearner) {
+          setLoader(false);
+          alert("success");
+        }
+      } catch (err) {
+        throw err;
+      }
+    } else {
+      alert(`remplissez les champs vides svp`);
+    }
+  };
 
   return (
     <main data-aos="zoom-in" data-aos-duration="2000">
@@ -37,9 +82,9 @@ export default function ModifyLearner({ oneLearner }) {
             type="file"
             accept="image/png, image/jpeg, image/jpg"
             className="file"
-            onChange={value => {
-              setImage(value.target.files[0])
-              setPicture(URL.createObjectURL(value.target.files[0]))
+            onChange={(value) => {
+              setImage(value.target.files[0]);
+              setPicture(URL.createObjectURL(value.target.files[0]));
             }}
             title=""
           />
@@ -77,42 +122,24 @@ export default function ModifyLearner({ oneLearner }) {
           />
         </div>
         <div className="display">
-          <select className="formBtn">
-            <option value="" onChange={(e) => setOption(e.target.value)}>
-              {option}
+          <select
+            className="formBtn"
+            onChange={(e) => setOption(e.target.value)}
+          >
+            <option value="Specialiste en Marketing Digital">
+              Specialiste en Marketing Digital
             </option>
-            {oneLearner.option == "Developpeur web et mobile" ? (
-              <option
-                value="Specialiste en Marketing Digital"
-                onChange={(e) => setOption(e.target.value)}
-              >
-                Specialiste en Marketing Digital
-              </option>
-            ) : (
-              <option
-                value="Developpeur web et mobile"
-                onChange={(e) => setOption(e.target.value)}
-              >
-                Developpeur web et mobile
-              </option>
-            )}
+            <option value="Developpeur web et mobile">
+              Developpeur web et mobile
+            </option>
           </select>
-          <select className="formBtn">
-            <option
-              value={promotion}
-              onChange={(e) => setPromotion(e.target.value)}
-            >
-              {promotion}
-            </option>
-            <option value="2020" onChange={(e) => setPromotion(e.target.value)}>
-              2020
-            </option>
-            <option value="2021" onChange={(e) => setPromotion(e.target.value)}>
-              2021
-            </option>
-            <option value="2022" onChange={(e) => setPromotion(e.target.value)}>
-              2022
-            </option>
+          <select
+            className="formBtn"
+            onChange={(e) => setPromotion(e.target.value)}
+          >
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
           </select>
         </div>
         <input
@@ -137,7 +164,7 @@ export default function ModifyLearner({ oneLearner }) {
         />
         <div className="display">
           <button className="formBtn cancel"> Annuler </button>
-          <button className="formBtn  submit">
+          <button className="formBtn  submit" onClick={handlerModify}>
             {/* {!loader ? `Soumettre` : `Envoie en cours ...`} */}
             Modify
           </button>
