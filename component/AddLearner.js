@@ -3,6 +3,7 @@ import Image from "next/image";
 import defaultPicture from "../img/defaultProfil.png";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function AddLearner() {
   const [name, setName] = React.useState(""),
@@ -19,6 +20,8 @@ export default function AddLearner() {
     [promotion, setPromotion] = React.useState(""),
     [picture, setPicture] = React.useState(defaultPicture),
     [loader, setLoader] = React.useState(false);
+
+  const router = useRouter();
 
   async function fetchLerner() {
     if (
@@ -51,7 +54,7 @@ export default function AddLearner() {
       try {
         if (newLearner) {
           setLoader(false);
-          alert("succes");
+          router.push("/");
         }
       } catch (err) {
         throw err;
