@@ -5,6 +5,19 @@ import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
 
 export default function ModifyLearner({ oneLearner }) {
+  const [name, setName] = React.useState(oneLearner.name),
+    [lastName, setLastName] = React.useState(oneLearner.lastName),
+    [image, setImage] = React.useState(
+      "https://res.cloudinary.com/davr0i2ga/image/upload/v1669824681/smtvpbcgudmaghtqoq6m.png"
+    ),
+    [email, setEmail] = React.useState(oneLearner.email),
+    [password, setPassword] = React.useState(oneLearner.password),
+    [contact, setContact] = React.useState(oneLearner.contact),
+    [option, setOption] = React.useState(oneLearner.option),
+    [description, setDescription] = React.useState(oneLearner.description),
+    [status, setStatus] = React.useState(oneLearner.status),
+    [promotion, setPromotion] = React.useState(oneLearner.promotion);
+
   console.log("oneLearner => ", oneLearner);
 
   return (
@@ -12,7 +25,7 @@ export default function ModifyLearner({ oneLearner }) {
       <div className="formContainer">
         <div className="containerPicture">
           <Image
-            src={""}
+            src={oneLearner.image}
             width="100"
             height="100"
             alt="image selected"
@@ -31,13 +44,15 @@ export default function ModifyLearner({ oneLearner }) {
             className="formBtn"
             type="text"
             placeholder="Nom"
-            value={oneLearner.name}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             className="formBtn"
             type="text"
             placeholder="Prénom"
-            value={oneLearner.lastName}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="display">
@@ -45,42 +60,76 @@ export default function ModifyLearner({ oneLearner }) {
             className="formBtn"
             type="text"
             placeholder="Status"
-            value={oneLearner.status}
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
           />
           <input
             className="formBtn"
             type="text"
             placeholder="Contact"
-            value={oneLearner.contact}
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
           />
         </div>
         <div className="display">
           <select className="formBtn">
-            <option value="">{oneLearner.option}</option>
+            <option value="" onChange={(e) => setOption(e.target.value)}>
+              {option}
+            </option>
             {oneLearner.option == "Developpeur web et mobile" ? (
-              <option value="Specialiste en Marketing Digital">
+              <option
+                value="Specialiste en Marketing Digital"
+                onChange={(e) => setOption(e.target.value)}
+              >
                 Specialiste en Marketing Digital
               </option>
             ) : (
-              <option value="Developpeur web et mobile">
+              <option
+                value="Developpeur web et mobile"
+                onChange={(e) => setOption(e.target.value)}
+              >
                 Developpeur web et mobile
               </option>
             )}
           </select>
           <select className="formBtn">
-            <option value="">Promotion</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
+            <option
+              value={promotion}
+              onChange={(e) => setPromotion(e.target.value)}
+            >
+              {promotion}
+            </option>
+            <option value="2020" onChange={(e) => setPromotion(e.target.value)}>
+              2020
+            </option>
+            <option value="2021" onChange={(e) => setPromotion(e.target.value)}>
+              2021
+            </option>
+            <option value="2022" onChange={(e) => setPromotion(e.target.value)}>
+              2022
+            </option>
           </select>
         </div>
-        <input className="formInput" type="email" placeholder="Email" />
         <input
+          className="formInput"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {/* <input
           className="formInput"
           type="password"
           placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        /> */}
+        <textarea
+          className="formInput"
+          placeholder="Déscription"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
-        <textarea className="formInput" placeholder="Déscription" />
         <div className="display">
           <button className="formBtn cancel"> Annuler </button>
           <button className="formBtn  submit">
