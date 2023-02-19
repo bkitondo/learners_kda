@@ -127,8 +127,8 @@ export default function AddLearner() {
               setOption(Option.target.value)
             }}>
             <option value="">Option</option>
-            <option value="dev">Developpeur web et mobile</option>
-            <option value="smd">Specialiste en Marketing Digital</option>
+            <option value="Developpeur web et mobile">Developpeur web et mobile</option>
+            <option value="Specialiste en Marketing Digital">Specialiste en Marketing Digital</option>
           </select>
           <select
             className="formBtn"

@@ -121,3 +121,8 @@
     color: blue;
     text-decoration: none;
     }
+
+    .Modify{
+        cursor: pointer;
+        width: 50px;
+    }
