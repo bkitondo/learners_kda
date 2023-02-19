@@ -3,6 +3,9 @@ import Image from "next/image";
 import defaultPicture from "../img/defaultProfil.png";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
+import { Router, useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ModifyLearner({ oneLearner }) {
   const [name, setName] = React.useState(oneLearner.name),
@@ -21,8 +24,10 @@ export default function ModifyLearner({ oneLearner }) {
     [loader, setLoader] = React.useState(false),
     [learner, setLearner] = React.useState(oneLearner);
   const idLearner = oneLearner._id;
+  const router = useRouter();
 
   const handlerModify = () => {
+    toast("Information modifée avec succes!");
     if (
       name !== "" &&
       lastName !== "" &&
@@ -56,7 +61,7 @@ export default function ModifyLearner({ oneLearner }) {
       try {
         if (updateLearner) {
           setLoader(false);
-          alert("success");
+          // router.push("/");
         }
       } catch (err) {
         throw err;
@@ -149,13 +154,6 @@ export default function ModifyLearner({ oneLearner }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {/* <input
-          className="formInput"
-          type="password"
-          placeholder="Mot de passe"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /> */}
         <textarea
           className="formInput"
           placeholder="Déscription"
@@ -165,8 +163,8 @@ export default function ModifyLearner({ oneLearner }) {
         <div className="display">
           <button className="formBtn cancel"> Annuler </button>
           <button className="formBtn  submit" onClick={handlerModify}>
-            {/* {!loader ? `Soumettre` : `Envoie en cours ...`} */}
-            Modify
+          <ToastContainer />
+            {!loader ? `Modify` : `Envoie en cours ...`}
           </button>
         </div>
       </div>
