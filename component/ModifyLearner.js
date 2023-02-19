@@ -16,7 +16,8 @@ export default function ModifyLearner({ oneLearner }) {
     [option, setOption] = React.useState(oneLearner.option),
     [description, setDescription] = React.useState(oneLearner.description),
     [status, setStatus] = React.useState(oneLearner.status),
-    [promotion, setPromotion] = React.useState(oneLearner.promotion);
+    [promotion, setPromotion] = React.useState(oneLearner.promotion),
+    [picture, setPicture] = React.useState(defaultPicture);
 
   console.log("oneLearner => ", oneLearner);
 
@@ -25,7 +26,7 @@ export default function ModifyLearner({ oneLearner }) {
       <div className="formContainer">
         <div className="containerPicture">
           <Image
-            src={oneLearner.image}
+            src={picture}
             width="100"
             height="100"
             alt="image selected"
@@ -36,6 +37,10 @@ export default function ModifyLearner({ oneLearner }) {
             type="file"
             accept="image/png, image/jpeg, image/jpg"
             className="file"
+            onChange={value => {
+              setImage(value.target.files[0])
+              setPicture(URL.createObjectURL(value.target.files[0]))
+            }}
             title=""
           />
         </div>
