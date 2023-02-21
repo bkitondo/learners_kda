@@ -1,11 +1,12 @@
 import AddLearner from '../../component/AddLearner'
 import Footer from '../../component/Footer'
 import Header from '../../component/Header'
+import Headers from "../../component/Hearders"
 
 export default function AddOneLearner() {
   return (
     <>
-      <Header />
+      <Headers />
       <AddLearner />
       <Footer />
     </>

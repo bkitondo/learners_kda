@@ -15,9 +15,11 @@ import Loader from '../component/Loader'
 import nProgress from 'nprogress'
 import Head from 'next/head'
 import Header from '@/component/Header'
+import Hearders from '@/component/Hearders'
 import Footer from '@/component/Footer'
 import Main from '@/component/Main'
 import { useState } from 'react'
+
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false),
@@ -46,7 +48,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       {loading ? (
         <>
-          <Header />
+          <Hearders />
           <Main />
           <Loader />
 

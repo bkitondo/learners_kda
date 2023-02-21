@@ -2,11 +2,12 @@ import React from "react";
 import Footer from "../../component/Footer";
 import Header from "../../component/Header";
 import ModifyLearner from "../../component/ModifyLearner";
+import Headers from "../../component/Hearders"
 
 function modifyLearner({ oneLearner }) {
   return (
     <>
-      <Header />
+      <Headers />
       <ModifyLearner oneLearner={oneLearner} />
       <Footer />
     </>

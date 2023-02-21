@@ -2,11 +2,12 @@ import React from 'react'
 import Header from '../../component/Header'
 import Footer from '../../component/Footer'
 import DisplayLeaner from '../../component/AllLearner'
+import Headers from "../../component/Hearders"
 
 function Categories() {
   return (
     <>
-      <Header />
+      <Headers />
       <DisplayLeaner />
       <Footer />
     </>
