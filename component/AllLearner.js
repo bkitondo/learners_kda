@@ -3,9 +3,9 @@ import Image from "next/image";
 import profil from "../img/main.jpg";
 import Link from "next/link";
 import CategorieDev from "../component/CategorieDev";
+import CategorieSmd from "../component/CategorieSmd";
 
 export default function DisplayLeaner({ learnersDev, learnersSmd }) {
-
   return (
     <main>
       <div className="container-main" data-aos="zoom-in">
@@ -49,19 +49,7 @@ export default function DisplayLeaner({ learnersDev, learnersSmd }) {
         </ul>
         <ul className="containerItem">
           {learnersDev?.map((dev) => {
-            return (
-              <li className="item hover" key={dev._id}>
-                <Link href="retail">
-                  <Image src={profil} alt="profil" className="profil" />
-                  <div className="containerDetail">
-                    <div className="itemdetail">{dev.name}</div>
-                    <div className="itemdetail">{dev.option}</div>
-                    <div className="itemdetail">{dev.status}</div>
-                  </div>
-                  <div className="detail">détail</div>
-                </Link>
-              </li>
-            );
+            return <CategorieSmd key={dev._id} dev={dev} />;
           })}
         </ul>
       </section>
