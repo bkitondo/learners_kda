@@ -1,8 +1,9 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Router, { useRouter } from "next/router";
+import AppContext from "../Context/AppContext";
 
-function Hearders() {
+function Hearders({ allLearners }) {
   const router = useRouter();
   function handlerHome() {
     router.push("/");
@@ -13,11 +14,16 @@ function Hearders() {
   }
 
   function handlerCategorieDev() {
-    router.push("categories");
+    router.push("../categories/dev");
   }
 
   function handlerCategorieSmd() {
-    router.push("categories");
+    router.push("../categories/smd");
+
+    // const optSmd = allLearners.filter(
+    //   (learner) => learner.option === "Marketing Digital"
+    // );
+    // console.log(" option => ", optSmd);
   }
 
   function handlerAddLearner() {
