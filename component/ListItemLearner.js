@@ -4,15 +4,17 @@ import Image from "next/image";
 import AppContext from "../Context/AppContext";
 import { useRouter } from "next/router";
 
-function ListItemLearner({ setOneLearner }) {
+function ListItemLearner({ setOneLearner, data }) {
   const context = useContext(AppContext);
 
-  const [learners, setLearners] = useState(context.allLearners);
+  const [learners, setLearners] = useState(context.data);
   const router = useRouter();
+
+  console.log("data => => ", learners);
 
   return (
     <div className="learnerAleatoir">
-      {learners.map((list) => {
+      {/* {data.map((list) => {
         return (
           <div
             className="container-learner"
@@ -37,7 +39,7 @@ function ListItemLearner({ setOneLearner }) {
             </div>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }

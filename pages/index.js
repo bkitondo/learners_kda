@@ -15,8 +15,16 @@ import AOS from "aos";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ learnersData, oneLearner, setOneLearner }) {
+export default function Home({
+  learnersData,
+  setData,
+  oneLearner,
+  setOneLearner,
+  data,
+}) {
   const [allLearners, setAllLearners] = useState(learnersData);
+  setData(allLearners);
+  console.log("data => ", data);
 
   return (
     <>
@@ -39,15 +47,15 @@ export default function Home({ learnersData, oneLearner, setOneLearner }) {
         <script>AOS.init()</script>
       </Head>
       <div>
-        <AppContext.Provider
+        {/* <AppContext.Provider
           value={{ allLearners, setAllLearners, oneLearner }}
-        >
+        > */}
           {/* <Header /> */}
           <Headers />
           <Main />
-          <Learner setOneLearner={setOneLearner} />
+          <Learner />
           <Footer />
-        </AppContext.Provider>
+        {/* </AppContext.Provider> */}
       </div>
     </>
   );
