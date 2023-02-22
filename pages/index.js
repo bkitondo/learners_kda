@@ -43,7 +43,7 @@ export default function Home({ learnersData, oneLearner, setOneLearner }) {
           value={{ allLearners, setAllLearners, oneLearner }}
         >
           {/* <Header /> */}
-          <Headers />
+          <Headers allLearners={allLearners} />
           <Main />
           <Learner setOneLearner={setOneLearner} />
           <Footer />
