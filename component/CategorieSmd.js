@@ -5,7 +5,7 @@ import Image from 'next/image'
 function CategorieSmd({dev}) {
   return (
     <li className="item hover" key={dev._id}>
-    <Link href="retail">
+    <Link href="retail">gi
       <Image src={dev.image} width={210} height={240} alt="profil" className="profil" />
       <div className="containerDetail">
         <div className="itemdetail">{dev.name} {dev.lastName}</div>
