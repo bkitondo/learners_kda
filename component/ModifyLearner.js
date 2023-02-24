@@ -3,7 +3,7 @@ import Image from "next/image";
 import defaultPicture from "../img/defaultProfil.png";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

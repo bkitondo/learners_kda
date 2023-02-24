@@ -1,10 +1,6 @@
-import React, { useState } from 'react'
 import ListItemLearner from '../component/ListItemLearner'
 
-function Learners({ learners, setOneLearner }) {
-  const handlerLearner = () => {
-  }
-
+function Learners({ setOneLearner }) {
   return (
     <div className="container">
       <div className="msg-alert" data-aos="fade-right" data-aos-duration="2000">
@@ -15,7 +11,7 @@ function Learners({ learners, setOneLearner }) {
           Eveniet a voluptatibus corrupti
         </p>
       </div>
-      <div className="learners-pub" onClick={handlerLearner}>
+      <div className="learners-pub">
         <ListItemLearner setOneLearner={setOneLearner} />
         <div className="publicity">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dignissimos eaque

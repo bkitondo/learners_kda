@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import Footer from '@/component/Footer'
-import Header from '@/component/Header'
 import Headers from '../component/Hearders'
-// import Header2 from '@/component/Header2'
 import Main from '@/component/Main'
 import Learner from '@/component/Learner'
 import 'aos/dist/aos.css'
@@ -34,10 +32,9 @@ export default function Home({ learnersData, oneLearner, setOneLearner }) {
       </Head>
       <div>
         <AppContext.Provider value={{ allLearners, setAllLearners, oneLearner }}>
-          {/* <Header /> */}
           <Headers allLearners={allLearners} />
           <Main />
-          <Learner setOneLearner={setOneLearner} />
+          <Learner setOneLearner={setOneLearner} oneLearner={oneLearner} />
           <Footer />
         </AppContext.Provider>
       </div>

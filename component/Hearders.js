@@ -1,41 +1,34 @@
-import Link from "next/link";
-import React, { useContext, useState } from "react";
-import Router, { useRouter } from "next/router";
-import AppContext from "../Context/AppContext";
+import React from 'react'
+import { useRouter } from 'next/router'
 
-function Hearders({ allLearners }) {
-  const router = useRouter();
+function Hearders() {
+  const router = useRouter()
   function handlerHome() {
-    router.push("/");
+    router.push('/')
   }
 
   function handlerAbout() {
-    router.push("../about");
+    router.push('../about')
   }
 
   function handlerCategorieDev() {
-    router.push("../categories/dev");
+    router.push('../categories/dev')
   }
 
   function handlerCategorieSmd() {
-    router.push("../categories/smd");
-
-    // const optSmd = allLearners.filter(
-    //   (learner) => learner.option === "Marketing Digital"
-    // );
-    // console.log(" option => ", optSmd);
+    router.push('../categories/smd')
   }
 
   function handlerAddLearner() {
-    router.push("../addLearner");
+    router.push('../addLearner')
   }
 
   function handlerSignin() {
-    router.push("../signin");
+    router.push('../signin')
   }
 
   function handlerLogin() {
-    router.push("../login");
+    router.push('../login')
   }
 
   return (
@@ -68,7 +61,7 @@ function Hearders({ allLearners }) {
         </ul>
       </nav>
     </header>
-  );
+  )
 }
 
-export default Hearders;
+export default Hearders
