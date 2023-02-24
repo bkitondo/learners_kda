@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import image from "../img/main.jpg";
 import Link from "next/link";
 import FontRetail from "./FontRetail";
 import { useRouter } from "next/router";

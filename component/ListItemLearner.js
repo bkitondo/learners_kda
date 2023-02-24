@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import AppContext from '../Context/AppContext'
@@ -18,7 +17,7 @@ function ListItemLearner({ setOneLearner }) {
             className="container-learner"
             onClick={() => {
               setOneLearner(list)
-              router.push('retail')
+              router.push('../retail')
             }}
             key={list.id}>
             <div className="blog-learner">
