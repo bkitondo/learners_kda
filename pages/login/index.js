@@ -2,11 +2,12 @@ import React from 'react'
 import Header from '../../component/Header'
 import Footer from '../../component/Footer'
 import Login from '../../component/Login'
+import Headers from "../../component/Hearders"
 
 export default function LogIn() {
   return (
     <>
-      <Header />
+      <Headers />
       <Login />
       <Footer />
     </>

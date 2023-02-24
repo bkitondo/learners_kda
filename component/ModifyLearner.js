@@ -3,27 +3,31 @@ import Image from "next/image";
 import defaultPicture from "../img/defaultProfil.png";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function AddLearner() {
-  const [name, setName] = React.useState(""),
-    [lastName, setLastName] = React.useState(""),
+export default function ModifyLearner({ oneLearner }) {
+  const [name, setName] = React.useState(oneLearner.name),
+    [lastName, setLastName] = React.useState(oneLearner.lastName),
     [image, setImage] = React.useState(
       "https://res.cloudinary.com/davr0i2ga/image/upload/v1669824681/smtvpbcgudmaghtqoq6m.png"
     ),
-    [email, setEmail] = React.useState(""),
-    [password, setPassword] = React.useState(""),
-    [contact, setContact] = React.useState(""),
-    [option, setOption] = React.useState(""),
-    [description, setDescription] = React.useState("salut"),
-    [status, setStatus] = React.useState(""),
-    [promotion, setPromotion] = React.useState(""),
+    [email, setEmail] = React.useState(oneLearner.email),
+    [password, setPassword] = React.useState(oneLearner.password),
+    [contact, setContact] = React.useState(oneLearner.contact),
+    [option, setOption] = React.useState(oneLearner.option),
+    [description, setDescription] = React.useState(oneLearner.description),
+    [status, setStatus] = React.useState(oneLearner.status),
+    [promotion, setPromotion] = React.useState(oneLearner.promotion),
     [picture, setPicture] = React.useState(defaultPicture),
-    [loader, setLoader] = React.useState(false);
-
+    [loader, setLoader] = React.useState(false),
+    [learner, setLearner] = React.useState(oneLearner);
+  const idLearner = oneLearner._id;
   const router = useRouter();
 
-  async function fetchLerner() {
+  const handlerModify = () => {
+    toast("Information modifée avec succes!");
     if (
       name !== "" &&
       lastName !== "" &&
@@ -34,10 +38,13 @@ export default function AddLearner() {
       promotion !== ""
     ) {
       setLoader(true);
-      const newLearner = await axios({
-        method: "POST",
+      console.log("oneLearner => ", learner);
+      console.log("Id => ", idLearner);
+
+      const updateLearner = axios({
+        method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        url: "http://localhost:3000/api/learner/learnerApi",
+        url: `http://localhost:3000/api/learner/${idLearner}`,
         data: {
           name,
           lastName,
@@ -52,9 +59,9 @@ export default function AddLearner() {
         },
       });
       try {
-        if (newLearner) {
+        if (updateLearner) {
           setLoader(false);
-          router.push("/");
+          // router.push("/");
         }
       } catch (err) {
         throw err;
@@ -62,7 +69,7 @@ export default function AddLearner() {
     } else {
       alert(`remplissez les champs vides svp`);
     }
-  }
+  };
 
   return (
     <main data-aos="zoom-in" data-aos-duration="2000">
@@ -79,11 +86,11 @@ export default function AddLearner() {
           <input
             type="file"
             accept="image/png, image/jpeg, image/jpg"
+            className="file"
             onChange={(value) => {
               setImage(value.target.files[0]);
               setPicture(URL.createObjectURL(value.target.files[0]));
             }}
-            className="file"
             title=""
           />
         </div>
@@ -92,17 +99,15 @@ export default function AddLearner() {
             className="formBtn"
             type="text"
             placeholder="Nom"
-            onChange={(Nom) => {
-              setName(Nom.target.value);
-            }}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             className="formBtn"
             type="text"
             placeholder="Prénom"
-            onChange={(Prénom) => {
-              setLastName(Prénom.target.value);
-            }}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="display">
@@ -110,41 +115,33 @@ export default function AddLearner() {
             className="formBtn"
             type="text"
             placeholder="Status"
-            onChange={(Status) => {
-              setStatus(Status.target.value);
-            }}
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
           />
           <input
             className="formBtn"
             type="text"
             placeholder="Contact"
-            onChange={(Contact) => {
-              setContact(Contact.target.value);
-            }}
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
           />
         </div>
         <div className="display">
           <select
             className="formBtn"
-            onChange={(Option) => {
-              setOption(Option.target.value);
-            }}
+            onChange={(e) => setOption(e.target.value)}
           >
-            <option value="">Option</option>
-            <option value="Developpeur web et mobile">
-              Developpeur web et mobile
-            </option>
             <option value="Specialiste en Marketing Digital">
               Specialiste en Marketing Digital
+            </option>
+            <option value="Developpeur web et mobile">
+              Developpeur web et mobile
             </option>
           </select>
           <select
             className="formBtn"
-            onChange={(Promotion) => {
-              setPromotion(Promotion.target.value);
-            }}
+            onChange={(e) => setPromotion(e.target.value)}
           >
-            <option value="">Promotion</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
@@ -154,29 +151,20 @@ export default function AddLearner() {
           className="formInput"
           type="email"
           placeholder="Email"
-          onChange={(Email) => {
-            setEmail(Email.target.value);
-          }}
-        />
-        <input
-          className="formInput"
-          type="password"
-          placeholder="Mot de passe"
-          onChange={(pin) => {
-            setPassword(pin.target.value);
-          }}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <textarea
-          cols="30"
-          rows="5"
           className="formInput"
           placeholder="Déscription"
-          onChange={(Déscription) => setDescription(Déscription.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <div className="display">
           <button className="formBtn cancel"> Annuler </button>
-          <button className="formBtn  submit" onClick={fetchLerner}>
-            {!loader ? `Soumettre` : `Envoie en cours ...`}
+          <button className="formBtn  submit" onClick={handlerModify}>
+          <ToastContainer />
+            {!loader ? `Modify` : `Envoie en cours ...`}
           </button>
         </div>
       </div>

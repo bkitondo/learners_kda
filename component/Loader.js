@@ -5,6 +5,7 @@ import loagingImg2 from "../img/loader2.gif";
 import loagingImg3 from "../img/loader3.gif";
 import Header from "./Header";
 
+
 function Loader() {
   return (
     <div className="loaderpage">

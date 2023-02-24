@@ -2,11 +2,13 @@ import React from 'react'
 import About from '../../component/About'
 import Footer from '../../component/Footer'
 import Header from '../../component/Header'
+import Headers from "../../component/Hearders"
 
 function BlogAbout() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <Headers />
       <About />
       <Footer />
     </>

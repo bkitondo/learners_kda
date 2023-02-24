@@ -1,16 +1,31 @@
-import React from 'react'
-import Image from 'next/image'
-import image from '../img/main.jpg'
-import Link from 'next/link'
-import FontRetail from './FontRetail'
+import React, { useState } from "react";
+import Image from "next/image";
+import image from "../img/main.jpg";
+import Link from "next/link";
+import FontRetail from "./FontRetail";
+import { useRouter } from "next/router";
 
 function Retail({ oneLearner }) {
+  const router = useRouter();
+
+  function handlerOneLearner(e) {
+    e.preventDefault();
+    router.push(`/modifyLearner/`);
+  }
+
   return (
     <>
       <FontRetail />
       <div className="retail-leaner">
         <div className="img-retail">
           <Image
+            style={{
+              margin: "0 10px 0 0",
+              height: "300px",
+              width: "100%",
+              objectFit: "contain",
+              objectPosition: "contain",
+            }}
             src={oneLearner.image}
             width={200}
             height={200}
@@ -21,11 +36,15 @@ function Retail({ oneLearner }) {
           <div className="retail-realisation">
             <span>Réalisations</span>
             <div className="realisation">
-              Contacter un developpeur web ou un marketeur digital qui vous convient pour
-              que votre entreprise soit numerisée comme vous y pensez.
+              Contacter un developpeur web ou un marketeur digital qui vous
+              convient pour que votre entreprise soit numerisée comme vous y
+              pensez.
             </div>
             <div className="lien">
               <Link href="#">githttps://github.com/ha</Link>
+            </div>
+            <div onClick={handlerOneLearner} className="Modify">
+              Modifier
             </div>
           </div>
         </div>
@@ -34,9 +53,11 @@ function Retail({ oneLearner }) {
             <Image
               src={oneLearner.image}
               style={{
-                borderRadius: '100%',
-                objectFit: 'cover',
-                margin: '0 10px 0 0',
+                borderRadius: "100%",
+                objectFit: "cover",
+                margin: "0 10px 0 0",
+                height: "50px",
+                width: "50px",
               }}
               width={50}
               height={50}
@@ -45,7 +66,7 @@ function Retail({ oneLearner }) {
             />
             <div className="top-profil">
               <div className="name">
-                {oneLearner?.name} {oneLearner?.lastName}{' '}
+                {oneLearner?.name} {oneLearner?.lastName}{" "}
               </div>
               <div className="option">{oneLearner?.option} </div>
             </div>
@@ -73,7 +94,7 @@ function Retail({ oneLearner }) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Retail
+export default Retail;

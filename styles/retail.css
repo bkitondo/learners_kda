@@ -121,3 +121,18 @@
     color: blue;
     text-decoration: none;
     }
+
+    .Modify{
+        cursor: pointer;
+        width: 90px;
+        background-color: #111727;
+        color: white;
+        text-align: center;
+        padding: 2px 0;
+        border-radius: 3px;
+        transition: 0.5s ease;
+    }
+
+    .Modify:hover{
+        background-color: #283149;
+    }
