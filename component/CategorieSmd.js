@@ -8,7 +8,7 @@ function CategorieSmd({dev}) {
     <Link href="retail">
       <Image src={dev.image} width={210} height={240} alt="profil" className="profil" />
       <div className="containerDetail">
-        <div className="itemdetail">{dev.name}</div>
+        <div className="itemdetail">{dev.name} {dev.lastName}</div>
         <div className="itemdetail">{dev.option}</div>
         <div className="itemdetail">{dev.status}</div>
       </div>
