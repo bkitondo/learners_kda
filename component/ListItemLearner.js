@@ -18,7 +18,7 @@ function ListItemLearner({ setOneLearner }) {
             className="container-learner"
             onClick={() => {
               setOneLearner(list)
-              router.push('retail')
+              router.push('../retail')
             }}
             key={list.id}>
             <div className="blog-learner">
